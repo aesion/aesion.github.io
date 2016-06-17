@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-17T06:54:20.781Z</updated>
+  <updated>2016-06-17T07:51:55.861Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,52 +16,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>心情</title>
-    <link href="http://yoursite.com/2016/06/17/%E5%BF%83%E6%83%85/"/>
-    <id>http://yoursite.com/2016/06/17/心情/</id>
-    <published>2016-06-17T06:45:39.000Z</published>
-    <updated>2016-06-17T06:54:20.781Z</updated>
+    <title>全新的网络加载框架Retrofit2，上位的小三</title>
+    <link href="http://yoursite.com/2016/06/17/%E5%85%A8%E6%96%B0%E7%9A%84%E7%BD%91%E7%BB%9C%E5%8A%A0%E8%BD%BD%E6%A1%86%E6%9E%B6Retrofit2%EF%BC%8C%E4%B8%8A%E4%BD%8D%E7%9A%84%E5%B0%8F%E4%B8%89/"/>
+    <id>http://yoursite.com/2016/06/17/全新的网络加载框架Retrofit2，上位的小三/</id>
+    <published>2016-06-17T07:42:09.000Z</published>
+    <updated>2016-06-17T07:51:55.861Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;心情很好&quot;&gt;&lt;a href=&quot;#心情很好&quot; class=&quot;headerlink&quot; title=&quot;心情很好&quot;&gt;&lt;/a&gt;心情很好&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;测试分类的数据
-&lt;/code&gt;&lt;/pre&gt;</content>
+    <content type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言:&quot;&gt;&lt;/a&gt;前言:&lt;/h3&gt;&lt;p&gt;纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式MVP,MVVM蒸蒸日上，Google都已经抛弃了apache，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着Eclipse；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;心情很好&quot;&gt;&lt;a href=&quot;#心情很好&quot; class=&quot;headerlink&quot; title=&quot;心情很好&quot;&gt;&lt;/a&gt;心情很好&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;测试分类的数据
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言:&quot;&gt;&lt;/a&gt;前言:&lt;/h3&gt;&lt;p&gt;纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式MVP,MVVM蒸蒸日上，Google都已经抛弃了apache，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着Eclipse；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+    
+      <category term="Retrofit2" scheme="http://yoursite.com/tags/Retrofit2/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客改版:从Wordpress到Hexo</title>
+    <link href="http://yoursite.com/2016/06/16/%E5%8D%9A%E5%AE%A2%E6%94%B9%E7%89%88/"/>
+    <id>http://yoursite.com/2016/06/16/博客改版/</id>
+    <published>2016-06-16T07:55:01.000Z</published>
+    <updated>2016-06-17T08:25:24.138Z</updated>
+    
+    <content type="html">&lt;p&gt;&amp;emsp; 之前一直有对博客进行改版的想法。从2014年最开始搭建时候使用的 Wordpress 博客到现在的 hexo 静态博客，中间也有换过很多个版本，但是都没有使用多久。&lt;/p&gt;
+&lt;p&gt;&amp;emsp; 其实换版本和迁移数据是一个很大的问题，对于网站的Seo也会有影响；但是用Hexo有一个好处就是可以不用支付服务器的费用，每年节省了几百块，而且对于数据来说也比较安全，毕竟数据都是放在&lt;a href=&quot;http://github.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github&lt;/a&gt;上的,不用担心忘记续费导致服务器被关停。&lt;/p&gt;
+&lt;p&gt;&amp;emsp; 其实在这之前我已经注册过好几个域名了比如：aesion.cn，daidingkang.cc等等，这次迁移到Hexo就不打算在改版了，没有那么多的精力，因为很多东西都会受到牵连；可能是本人的审美的问题，比较喜欢简单白净的页面，不喜欢太花俏和繁琐；博客使用 NexT 主题，并把所有内容生成静态文件。这样访问速度也得到了保证，不像wordpress等那么臃肿；&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&amp;emsp; 之前本人一直都是泡在CSDN，简书，知乎等论坛，博客一直都在CSDN撰写；本网站建成之后可能会同步部分CSDN的文章。本人程序员一枚，我认为每个程序员都应该要养成写博客的好习惯，之前看过一篇文章&lt;a href=&quot;https://www.douban.com/note/532801016/&quot; title=&quot;《究竟为什么程序员最好养成写博客的习惯？》&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《究竟为什么程序员最好养成写博客的习惯？》&lt;/a&gt;，讲的是程序员为什么要学会写博客，文科生最怕看代码，理科生最怕写文章；写作对程序员来说可以更好的理解你的代码，任何的剖析与解读都能让你增长对代码的认识。所以只要自己有时间，闲暇的时候写篇博客，养成一种好习惯。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;emsp; 之前一直有对博客进行改版的想法。从2014年最开始搭建时候使用的 Wordpress 博客到现在的 hexo 静态博客，中间也有换过很多个版本，但是都没有使用多久。&lt;/p&gt;
+&lt;p&gt;&amp;emsp; 其实换版本和迁移数据是一个很大的问题，对于网站的Seo也会有影响；但是用Hexo有一个好处就是可以不用支付服务器的费用，每年节省了几百块，而且对于数据来说也比较安全，毕竟数据都是放在&lt;a href=&quot;http://github.com&quot;&gt;Github&lt;/a&gt;上的,不用担心忘记续费导致服务器被关停。&lt;/p&gt;
+&lt;p&gt;&amp;emsp; 其实在这之前我已经注册过好几个域名了比如：aesion.cn，daidingkang.cc等等，这次迁移到Hexo就不打算在改版了，没有那么多的精力，因为很多东西都会受到牵连；可能是本人的审美的问题，比较喜欢简单白净的页面，不喜欢太花俏和繁琐；博客使用 NexT 主题，并把所有内容生成静态文件。这样访问速度也得到了保证，不像wordpress等那么臃肿；&lt;br&gt;
     
     </summary>
     
       <category term="orther" scheme="http://yoursite.com/categories/orther/"/>
     
     
-      <category term="随记" scheme="http://yoursite.com/tags/%E9%9A%8F%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>标签测试文章</title>
-    <link href="http://yoursite.com/2016/06/17/hello/"/>
-    <id>http://yoursite.com/2016/06/17/hello/</id>
-    <published>2016-06-17T03:33:56.368Z</published>
-    <updated>2016-06-17T06:17:01.345Z</updated>
-    
-    <content type="html">&lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;这是一篇新的博客
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;这是一篇新的博客
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-      <category term="Testing" scheme="http://yoursite.com/tags/Testing/"/>
-    
-      <category term="Another Tag" scheme="http://yoursite.com/tags/Another-Tag/"/>
+      <category term="orther" scheme="http://yoursite.com/tags/orther/"/>
     
   </entry>
   
