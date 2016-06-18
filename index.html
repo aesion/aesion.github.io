@@ -369,19 +369,184 @@
 </blockquote>
 <p>&emsp; 首先简单介绍下Retrofit这个框架，Retrofit是底层是基于Okhttp的也就是说用法和<code>Okhttp</code>很相似；Retrofit它是一个HTTP请求工具，和Google开发的Volley功能上非常相似，这里有<a href="http://bxbxbai.github.io/2014/12/24/read-volley-source-code/">Volley</a>的源码解析，但是使用上很不相似。Retrofit使用起来更简单，Volley使用上更加原始而且符合使用者的直觉，其实我觉得如果对自己Volley封装一下也可以像Retrofit那样的简单的使用；</p>
 <h2 id="如何使用Retrofit"><a href="#如何使用Retrofit" class="headerlink" title="如何使用Retrofit"></a>如何使用Retrofit</h2><p>&emsp; 第一步当然是导包了，需要导入的包如下：</p>
-<pre><code>compile &apos;io.reactivex:rxjava:1.1.0&apos;
-compile &apos;io.reactivex:rxandroid:1.1.0&apos;
-compile &apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&apos;
-compile &apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&apos;
-compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&apos;
-compile &apos;com.squareup.retrofit2:converter-scalars:2.0.0&apos;
-compile &apos;com.google.code.gson:gson:2.6.2&apos;
-</code></pre><p>这里需要值得注意的是导入的retrofit2包的版本必须要一致，否则就会报错，我跳过的坑</p>
+<pre><code>compile &apos;io.reactivex:rxjava:1.1.0&apos;//Rx的包
+compile &apos;io.reactivex:rxandroid:1.1.0&apos;//Rx的包
+compile &apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&apos;//Retrofit2所需要的包
+compile &apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&apos;//ConverterFactory的Gson依赖包
+compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&apos;//CallAdapterFactory的Rx依赖包
+compile &apos;com.squareup.retrofit2:converter-scalars:2.0.0&apos;//ConverterFactory的String依赖包
+compile &apos;com.google.code.gson:gson:2.6.2&apos;//Gosn解析包
+</code></pre><p>这里需要值得注意的是导入的retrofit2包的<strong>版本必须要一致</strong>，否则就会报错，我跳过的坑大家就不要再跳了</p>
 <p>&emsp; 首先定义我们请求的Api，我们假设是这样的 </p>
 <pre><code>http://106.3.227.33/pulamsi/mobileLogin/submit.html
-</code></pre>
+</code></pre><p>与Okhttp不同的是，Retrofit需要定义一个接口，用来返回我们的Call对象，这里示范的是Post请求：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RequestSerives</span> </span>&#123;</span><br><span class="line">   	<span class="meta">@POST</span>(<span class="string">"mobileLogin/submit.html"</span>)</span><br><span class="line">   	<span class="function">Call&lt;String&gt; <span class="title">getString</span><span class="params">(@Query(<span class="string">"loginname"</span>)</span> String loginname,</span><br><span class="line">                          @<span class="title">Query</span><span class="params">(<span class="string">"nloginpwd"</span>)</span> String nloginpwd)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/06/17/全新的网络加载框架Retrofit2，上位的小三/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/17/README2/" itemprop="url">
+                  MD
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-17T15:42:09+08:00" content="2016-06-17">
+              2016-06-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/17/README2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/17/README2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          ###　　　　　　　　　　　　Author:果冻虾仁
+###　　　　　　　　　 E-mail:Jelly.K.Wang@qq.com
+blah blah blah
+
+
+##目录
+
+横线
+标题
+文本
+普通文本
+单行文本
+多行文本
+文字高亮
+换行
+斜体
+粗体
+删除线
+
+
+图片
+来源于网络的图片
+GitHub仓库中的图片
+
+
+链接 
+文字超链接
+链接外部URL
+链接本仓库里的URL
+
+
+锚点
+图片链接
+
+
+列表
+无序列表
+有序列表
+复选框列表
+
+
+块引用
+代码高亮
+表格 
+表情
+
+横线*、—、___可以显示横线效果
+*
+标题#一级标题
+##二级标题
+###三级标题
+####四级标题
+#####五级标题
+######六级标题
+文本###普通文本这是一段普通的文本
+###单行文本
+Hello,大家好，我是果冻虾仁。
+在一行开头加入1个Tab或者4个空格。
+###文本块
+####语法1在连续几行的文本
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/17/README2/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -579,7 +744,7 @@ compile &apos;com.google.code.gson:gson:2.6.2&apos;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

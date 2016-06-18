@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-18T03:20:50.435Z</updated>
+  <updated>2016-06-18T07:00:21.935Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/17/%E5%85%A8%E6%96%B0%E7%9A%84%E7%BD%91%E7%BB%9C%E5%8A%A0%E8%BD%BD%E6%A1%86%E6%9E%B6Retrofit2%EF%BC%8C%E4%B8%8A%E4%BD%8D%E7%9A%84%E5%B0%8F%E4%B8%89/"/>
     <id>http://yoursite.com/2016/06/17/全新的网络加载框架Retrofit2，上位的小三/</id>
     <published>2016-06-17T07:42:09.000Z</published>
-    <updated>2016-06-18T03:20:50.435Z</updated>
+    <updated>2016-06-18T07:00:21.935Z</updated>
     
     <content type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言:&quot;&gt;&lt;/a&gt;前言:&lt;/h3&gt;&lt;p&gt;&amp;emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到&lt;code&gt;android-async-http&lt;/code&gt;，再到如今的老将&lt;code&gt;Volley&lt;/code&gt;；曾几何时，正是&lt;code&gt;Xutils&lt;/code&gt;,&lt;code&gt;Afindl&lt;/code&gt;等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式&lt;code&gt;MVP,MVVM&lt;/code&gt;蒸蒸日上，Google都已经抛弃了&lt;code&gt;apache&lt;/code&gt;，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着&lt;code&gt;Eclipse&lt;/code&gt;；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…&lt;/p&gt;
 &lt;h2 id=&quot;主题&quot;&gt;&lt;a href=&quot;#主题&quot; class=&quot;headerlink&quot; title=&quot;主题&quot;&gt;&lt;/a&gt;主题&lt;/h2&gt;&lt;p&gt;&amp;emsp; 来自Retrofit的官网介绍&lt;/p&gt;
@@ -29,18 +29,40 @@
 &lt;/blockquote&gt;
 &lt;p&gt;&amp;emsp; 首先简单介绍下Retrofit这个框架，Retrofit是底层是基于Okhttp的也就是说用法和&lt;code&gt;Okhttp&lt;/code&gt;很相似；Retrofit它是一个HTTP请求工具，和Google开发的Volley功能上非常相似，这里有&lt;a href=&quot;http://bxbxbai.github.io/2014/12/24/read-volley-source-code/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Volley&lt;/a&gt;的源码解析，但是使用上很不相似。Retrofit使用起来更简单，Volley使用上更加原始而且符合使用者的直觉，其实我觉得如果对自己Volley封装一下也可以像Retrofit那样的简单的使用；&lt;/p&gt;
 &lt;h2 id=&quot;如何使用Retrofit&quot;&gt;&lt;a href=&quot;#如何使用Retrofit&quot; class=&quot;headerlink&quot; title=&quot;如何使用Retrofit&quot;&gt;&lt;/a&gt;如何使用Retrofit&lt;/h2&gt;&lt;p&gt;&amp;emsp; 第一步当然是导包了，需要导入的包如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;compile &amp;apos;io.reactivex:rxjava:1.1.0&amp;apos;
-compile &amp;apos;io.reactivex:rxandroid:1.1.0&amp;apos;
-compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.squareup.retrofit2:converter-scalars:2.0.0&amp;apos;
-compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要值得注意的是导入的retrofit2包的版本必须要一致，否则就会报错，我跳过的坑&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;compile &amp;apos;io.reactivex:rxjava:1.1.0&amp;apos;//Rx的包
+compile &amp;apos;io.reactivex:rxandroid:1.1.0&amp;apos;//Rx的包
+compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;//Retrofit2所需要的包
+compile &amp;apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&amp;apos;//ConverterFactory的Gson依赖包
+compile &amp;apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&amp;apos;//CallAdapterFactory的Rx依赖包
+compile &amp;apos;com.squareup.retrofit2:converter-scalars:2.0.0&amp;apos;//ConverterFactory的String依赖包
+compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;//Gosn解析包
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要值得注意的是导入的retrofit2包的&lt;strong&gt;版本必须要一致&lt;/strong&gt;，否则就会报错，我跳过的坑大家就不要再跳了&lt;/p&gt;
 &lt;p&gt;&amp;emsp; 首先定义我们请求的Api，我们假设是这样的 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;http://106.3.227.33/pulamsi/mobileLogin/submit.html
-&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RequestSerives&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;meta&quot;&gt;@POST&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;mobileLogin/submit.html&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;function&quot;&gt;Call&amp;lt;String&amp;gt; &lt;span class=&quot;title&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(@Query(&lt;span class=&quot;string&quot;&gt;&quot;loginname&quot;&lt;/span&gt;)&lt;/span&gt; String loginname,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                          @&lt;span class=&quot;title&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;nloginpwd&quot;&lt;/span&gt;)&lt;/span&gt; String nloginpwd)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;与Okhttp不同的是，Retrofit需要定义一个接口，用来返回我们的Call对象，这里示范的是Post请求：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RequestSerives&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;meta&quot;&gt;@POST&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;mobileLogin/submit.html&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;function&quot;&gt;Call&amp;lt;String&amp;gt; &lt;span class=&quot;title&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(@Query(&lt;span class=&quot;string&quot;&gt;&quot;loginname&quot;&lt;/span&gt;)&lt;/span&gt; String loginname,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                          @&lt;span class=&quot;title&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;nloginpwd&quot;&lt;/span&gt;)&lt;/span&gt; String nloginpwd)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;细心的同学可能注意到了，这段代码用了两个注解，我们一一来解答；&lt;/p&gt;
+&lt;p&gt;Retrofit提供的请求方式注解有&lt;code&gt;@GET&lt;/code&gt;和&lt;code&gt;@POST&lt;/code&gt;，参数注解有&lt;code&gt;@PATH&lt;/code&gt;和&lt;code&gt;@Query&lt;/code&gt;等，我们只介绍常用的;前两个顾名思义就是定义你的请求方式&lt;code&gt;Get or Post&lt;/code&gt;，后面的&lt;code&gt;@PATH&lt;/code&gt;指的是通过参数填充完整的路径，一般用法：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@GET&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;#123;name&amp;#125;&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;function&quot;&gt;Call&amp;lt;User&amp;gt; &lt;span class=&quot;title&quot;&gt;getUser&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(@Path(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;)&lt;/span&gt; String name)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里的参数username会被填充至&lt;code&gt;{name}&lt;/code&gt;中，形成完整的Url请求地址，&lt;code&gt;{name}&lt;/code&gt;相当于一个占位符；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;@Query&lt;/code&gt;就是我们的请求的键值对的设置，我们构建Call对象的时候会传入此参数，&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@POST&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;mobileLogin/submit.html&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;function&quot;&gt;Call&amp;lt;String&amp;gt; &lt;span class=&quot;title&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(@Query(&lt;span class=&quot;string&quot;&gt;&quot;loginname&quot;&lt;/span&gt;)&lt;/span&gt; String loginname,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                          @&lt;span class=&quot;title&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;nloginpwd&quot;&lt;/span&gt;)&lt;/span&gt; String nloginpwd)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这里&lt;code&gt;@Query(&amp;quot;loginname&amp;quot;)&lt;/code&gt;就是键，后面的&lt;code&gt;loginname&lt;/code&gt;就是具体的值了，值得注意的是Get和Post请求，都是这样填充参数的；&lt;/p&gt;
+&lt;p&gt;接口写完了之后我们需要来定义Retrofit对象来进行请求了；&lt;/p&gt;
+&lt;h3 id=&quot;创建一个Retrofit-对象&quot;&gt;&lt;a href=&quot;#创建一个Retrofit-对象&quot; class=&quot;headerlink&quot; title=&quot;创建一个Retrofit 对象&quot;&gt;&lt;/a&gt;创建一个Retrofit 对象&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Retrofit retrofit = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Retrofit.Builder()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               .baseUrl(&lt;span class=&quot;string&quot;&gt;&quot;http://106.3.227.33/pulamsi/&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               &lt;span class=&quot;comment&quot;&gt;//增加返回值为String的支持&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               .addConverterFactory(ScalarsConverterFactory.create())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               &lt;span class=&quot;comment&quot;&gt;//增加返回值为Gson的支持(以实体类返回)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               .addConverterFactory(GsonConverterFactory.create())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               &lt;span class=&quot;comment&quot;&gt;//增加返回值为Oservable&amp;lt;T&amp;gt;的支持&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               .addCallAdapterFactory(RxJavaCallAdapterFactory.create())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               .build();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里的&lt;code&gt;baseurl&lt;/code&gt;加上之前&lt;code&gt;@POST(&amp;quot;mobileLogin/submit.html&amp;quot;)&lt;/code&gt;定义的参数形成完整的请求地址；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;addConverterFactory(ScalarsConverterFactory.create())&lt;/code&gt;的意思是构建了一个返回支持，如果你的Call对象的泛型接收另外的格式需要添加另外的支持，上述代码已经列出；&lt;/p&gt;
+&lt;p&gt;接下来我们用这个&lt;code&gt;Retrofit&lt;/code&gt;对象创建一个&lt;code&gt;RequestSerives&lt;/code&gt;接口对象，也就是我们之前定义的那个接口，并且得到我们的Call对象；&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;RequestSerives requestSerives = retrofit.create(RequestSerives.class);&lt;span class=&quot;comment&quot;&gt;//这里采用的是Java的动态代理模式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Call&amp;lt;String&amp;gt; call = requestSerives.getString(&lt;span class=&quot;string&quot;&gt;&quot;userName&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;1234&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//传入我们请求的键值对的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;利用得到的Call对象，然后我们就发出网络请求了：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; call.enqueue(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Callback&amp;lt;String&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onResponse&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Call&amp;lt;String&amp;gt; call, Response&amp;lt;String&amp;gt; response)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Log.e(&lt;span class=&quot;string&quot;&gt;&quot;成功&quot;&lt;/span&gt;,response.body().toString());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onFailure&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Call&amp;lt;String&amp;gt; call, Throwable t)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Log.e(&lt;span class=&quot;string&quot;&gt;&quot;失败&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;失败&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;请求成功会调用&lt;code&gt;onResponse&lt;/code&gt;方法，并且请求成功的值在&lt;code&gt;response.body()&lt;/code&gt;中，失败则会调用&lt;code&gt;onFailure&lt;/code&gt;，怎么样，是不是很简单呢。&lt;/p&gt;
+&lt;p&gt;下面我贴出完整的代码，主要是两个类&lt;strong&gt;RequestSerives&lt;/strong&gt;和&lt;strong&gt;MainActivity&lt;/strong&gt;；&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;RequestSerives-class&quot;&gt;&lt;a href=&quot;#RequestSerives-class&quot; class=&quot;headerlink&quot; title=&quot;RequestSerives.class&quot;&gt;&lt;/a&gt;RequestSerives.class&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; retrofit2.Call;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; retrofit2.http.POST;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; retrofit2.http.Query;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* User: Daidingkang(ddk19941017@Gmail.com)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Date: 2016-06-15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Time: 11:22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* FIXME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RequestSerives&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;meta&quot;&gt;@POST&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;mobileLogin/submit.html&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;function&quot;&gt;Call&amp;lt;String&amp;gt; &lt;span class=&quot;title&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(@Query(&lt;span class=&quot;string&quot;&gt;&quot;loginname&quot;&lt;/span&gt;)&lt;/span&gt; String loginname,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                          @&lt;span class=&quot;title&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;nloginpwd&quot;&lt;/span&gt;)&lt;/span&gt; String nloginpwd)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;MainActivity-class&quot;&gt;&lt;a href=&quot;#MainActivity-class&quot; class=&quot;headerlink&quot; title=&quot;MainActivity.class&quot;&gt;&lt;/a&gt;MainActivity.class&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;AppCompatActivity&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        setContentView(R.layout.activity_main);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        init();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Retrofit retrofit = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Retrofit.Builder()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                .baseUrl(&lt;span class=&quot;string&quot;&gt;&quot;http://106.3.227.33/pulamsi/&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                .addConverterFactory(ScalarsConverterFactory.create())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                .build();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        RequestSerives requestSerives = retrofit.create(RequestSerives.class);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Call&amp;lt;String&amp;gt; call = requestSerives.getString(&lt;span class=&quot;string&quot;&gt;&quot;13288453023&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;654&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        call.enqueue(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Callback&amp;lt;String&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onResponse&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Call&amp;lt;String&amp;gt; call, Response&amp;lt;String&amp;gt; response)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                Log.e(&lt;span class=&quot;string&quot;&gt;&quot;成功&quot;&lt;/span&gt;,response.body().toString());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onFailure&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Call&amp;lt;String&amp;gt; call, Throwable t)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                Log.e(&lt;span class=&quot;string&quot;&gt;&quot;失败&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;失败&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+</content>
     
     <summary type="html">
     
@@ -51,17 +73,17 @@ compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;
 &lt;/blockquote&gt;
 &lt;p&gt;&amp;emsp; 首先简单介绍下Retrofit这个框架，Retrofit是底层是基于Okhttp的也就是说用法和&lt;code&gt;Okhttp&lt;/code&gt;很相似；Retrofit它是一个HTTP请求工具，和Google开发的Volley功能上非常相似，这里有&lt;a href=&quot;http://bxbxbai.github.io/2014/12/24/read-volley-source-code/&quot;&gt;Volley&lt;/a&gt;的源码解析，但是使用上很不相似。Retrofit使用起来更简单，Volley使用上更加原始而且符合使用者的直觉，其实我觉得如果对自己Volley封装一下也可以像Retrofit那样的简单的使用；&lt;/p&gt;
 &lt;h2 id=&quot;如何使用Retrofit&quot;&gt;&lt;a href=&quot;#如何使用Retrofit&quot; class=&quot;headerlink&quot; title=&quot;如何使用Retrofit&quot;&gt;&lt;/a&gt;如何使用Retrofit&lt;/h2&gt;&lt;p&gt;&amp;emsp; 第一步当然是导包了，需要导入的包如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;compile &amp;apos;io.reactivex:rxjava:1.1.0&amp;apos;
-compile &amp;apos;io.reactivex:rxandroid:1.1.0&amp;apos;
-compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.squareup.retrofit2:converter-scalars:2.0.0&amp;apos;
-compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要值得注意的是导入的retrofit2包的版本必须要一致，否则就会报错，我跳过的坑&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;compile &amp;apos;io.reactivex:rxjava:1.1.0&amp;apos;//Rx的包
+compile &amp;apos;io.reactivex:rxandroid:1.1.0&amp;apos;//Rx的包
+compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;//Retrofit2所需要的包
+compile &amp;apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&amp;apos;//ConverterFactory的Gson依赖包
+compile &amp;apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&amp;apos;//CallAdapterFactory的Rx依赖包
+compile &amp;apos;com.squareup.retrofit2:converter-scalars:2.0.0&amp;apos;//ConverterFactory的String依赖包
+compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;//Gosn解析包
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要值得注意的是导入的retrofit2包的&lt;strong&gt;版本必须要一致&lt;/strong&gt;，否则就会报错，我跳过的坑大家就不要再跳了&lt;/p&gt;
 &lt;p&gt;&amp;emsp; 首先定义我们请求的Api，我们假设是这样的 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;http://106.3.227.33/pulamsi/mobileLogin/submit.html
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;与Okhttp不同的是，Retrofit需要定义一个接口，用来返回我们的Call对象，这里示范的是Post请求：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RequestSerives&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;meta&quot;&gt;@POST&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;mobileLogin/submit.html&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;function&quot;&gt;Call&amp;lt;String&amp;gt; &lt;span class=&quot;title&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(@Query(&lt;span class=&quot;string&quot;&gt;&quot;loginname&quot;&lt;/span&gt;)&lt;/span&gt; String loginname,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                          @&lt;span class=&quot;title&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;nloginpwd&quot;&lt;/span&gt;)&lt;/span&gt; String nloginpwd)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
@@ -71,6 +93,392 @@ compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;
       <category term="Retrofit2" scheme="http://yoursite.com/tags/Retrofit2/"/>
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MD</title>
+    <link href="http://yoursite.com/2016/06/17/README2/"/>
+    <id>http://yoursite.com/2016/06/17/README2/</id>
+    <published>2016-06-17T07:42:09.000Z</published>
+    <updated>2016-06-18T06:01:00.995Z</updated>
+    
+    <content type="html">&lt;p&gt;###　　　　　　　　　　　　Author:果冻虾仁&lt;/p&gt;
+&lt;p&gt;###　　　　　　　　　 E-mail:Jelly.K.Wang@qq.com&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote-center&quot;&gt;blah blah blah&lt;/blockquote&gt;
+
+
+&lt;p&gt;##目录&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#横线&quot;&gt;横线&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#标题&quot;&gt;标题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#文本&quot;&gt;文本&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;普通文本&lt;/li&gt;
+&lt;li&gt;单行文本&lt;/li&gt;
+&lt;li&gt;多行文本&lt;/li&gt;
+&lt;li&gt;文字高亮&lt;/li&gt;
+&lt;li&gt;换行&lt;/li&gt;
+&lt;li&gt;斜体&lt;/li&gt;
+&lt;li&gt;粗体&lt;/li&gt;
+&lt;li&gt;删除线&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#图片&quot;&gt;图片&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;来源于网络的图片&lt;/li&gt;
+&lt;li&gt;GitHub仓库中的图片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#链接&quot;&gt;链接&lt;/a&gt; &lt;ul&gt;
+&lt;li&gt;文字超链接&lt;ul&gt;
+&lt;li&gt;链接外部URL&lt;/li&gt;
+&lt;li&gt;链接本仓库里的URL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;锚点&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#图片链接&quot;&gt;图片链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#列表&quot;&gt;列表&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;无序列表&lt;/li&gt;
+&lt;li&gt;有序列表&lt;/li&gt;
+&lt;li&gt;复选框列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#块引用&quot;&gt;块引用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#代码高亮&quot;&gt;代码高亮&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#表格&quot;&gt;表格&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#表情&quot;&gt;表情&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;横线&quot;&gt;&lt;a href=&quot;#横线&quot; class=&quot;headerlink&quot; title=&quot;横线&quot;&gt;&lt;/a&gt;横线&lt;/h2&gt;&lt;p&gt;&lt;em&gt;*&lt;/em&gt;、—、___可以显示横线效果&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;*&quot;&gt;&lt;/a&gt;&lt;em&gt;*&lt;/em&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;h2 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h2&gt;&lt;p&gt;#一级标题&lt;/p&gt;
+&lt;p&gt;##二级标题&lt;/p&gt;
+&lt;p&gt;###三级标题&lt;/p&gt;
+&lt;p&gt;####四级标题&lt;/p&gt;
+&lt;p&gt;#####五级标题&lt;/p&gt;
+&lt;p&gt;######六级标题&lt;/p&gt;
+&lt;h2 id=&quot;文本&quot;&gt;&lt;a href=&quot;#文本&quot; class=&quot;headerlink&quot; title=&quot;文本&quot;&gt;&lt;/a&gt;文本&lt;/h2&gt;&lt;p&gt;###普通文本&lt;br&gt;这是一段普通的文本&lt;/p&gt;
+&lt;p&gt;###单行文本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Hello,大家好，我是果冻虾仁。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在一行开头加入1个Tab或者4个空格。&lt;/p&gt;
+&lt;p&gt;###文本块&lt;/p&gt;
+&lt;p&gt;####语法1&lt;br&gt;在连续几行的文本开头加入1个Tab或者4个空格。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;欢迎到访
+很高兴见到您
+祝您，早上好，中午好，下午好，晚安
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;####语法2&lt;br&gt;使用一对各三个的反引号：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;欢迎到访&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;我是C++码农&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;你可以在知乎、CSDN、简书搜索【果冻虾仁】找到我&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;该语法也可以实现代码高亮，见&lt;a href=&quot;#代码高亮&quot;&gt;代码高亮&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###文字高亮&lt;br&gt;文字高亮功能能使行内部分文字高亮，使用一对反引号。&lt;br&gt;语法：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;`linux` `网络编程` `socket` `epoll`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;效果：&lt;code&gt;linux&lt;/code&gt; &lt;code&gt;网络编程&lt;/code&gt; &lt;code&gt;socket&lt;/code&gt; &lt;code&gt;epoll&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;也适合做一篇文章的tag&lt;/p&gt;
+&lt;p&gt;####换行&lt;br&gt;直接回车不能换行，&lt;br&gt;可以在上一行文本后面补两个空格，&lt;br&gt;这样下一行的文本就换行了。&lt;/p&gt;
+&lt;p&gt;或者就是在两行文本直接加一个空行。&lt;/p&gt;
+&lt;p&gt;也能实现换行效果，不过这个行间距有点大。&lt;/p&gt;
+&lt;p&gt;####斜体、粗体、删除线&lt;br&gt;|语法|效果|&lt;br&gt;|—-|—–&lt;br&gt;|&lt;code&gt;*斜体1*&lt;/code&gt;|&lt;em&gt;斜体1&lt;/em&gt;&lt;br&gt;|&lt;code&gt;_斜体2_&lt;/code&gt;|&lt;em&gt;斜体2&lt;/em&gt;&lt;br&gt;|&lt;code&gt;**粗体1**&lt;/code&gt;|&lt;strong&gt;粗体1&lt;/strong&gt;&lt;br&gt;|&lt;code&gt;__粗体2__&lt;/code&gt;|&lt;strong&gt;粗体2&lt;/strong&gt;&lt;br&gt;|&lt;code&gt;这是一个 ~~删除线~~&lt;/code&gt;|这是一个 &lt;del&gt;删除线&lt;/del&gt;&lt;br&gt;|&lt;code&gt;***斜粗体1***&lt;/code&gt;|&lt;strong&gt;&lt;em&gt;斜粗体1&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;|&lt;code&gt;___斜粗体2___&lt;/code&gt;|&lt;strong&gt;&lt;em&gt;斜粗体2&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;|&lt;code&gt;***~~斜粗体删除线1~~***&lt;/code&gt;|&lt;strong&gt;&lt;em&gt;&lt;del&gt;斜粗体删除线1&lt;/del&gt;&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;|&lt;code&gt;~~***斜粗体删除线2***~~&lt;/code&gt;|&lt;del&gt;&lt;strong&gt;&lt;em&gt;斜粗体删除线2&lt;/em&gt;&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;斜体、粗体、删除线可混合使用&lt;/p&gt;
+&lt;h2 id=&quot;图片&quot;&gt;&lt;a href=&quot;#图片&quot; class=&quot;headerlink&quot; title=&quot;图片&quot;&gt;&lt;/a&gt;图片&lt;/h2&gt;&lt;p&gt;基本格式：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;![alt](URL title)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;alt和title即对应HTML中的alt和title属性（都可省略）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;alt表示图片显示失败时的替换文本&lt;/li&gt;
+&lt;li&gt;title表示鼠标悬停在图片时的显示文本（注意这里要加引号）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;URL即图片的url地址，如果引用本仓库中的图片，直接使用&lt;strong&gt;相对路径&lt;/strong&gt;就可了，如果引用其他github仓库中的图片要注意格式，即：&lt;code&gt;仓库地址/raw/分支名/图片路径&lt;/code&gt;，如：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;#&lt;/th&gt;
+&lt;th&gt;语法&lt;/th&gt;
+&lt;th&gt;效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;![baidu](http://www.baidu.com/img/bdlogo.gif &amp;quot;百度logo&amp;quot;)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;http://www.baidu.com/img/bdlogo.gif&quot; alt=&quot;baidu&quot; title=&quot;百度logo&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;![][foryou]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif&quot; alt=&quot;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;注意例2的写法使用了&lt;strong&gt;URL标识符&lt;/strong&gt;的形式，在&lt;a href=&quot;#链接&quot;&gt;链接&lt;/a&gt;一节有介绍。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在文末有foryou的定义：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[foryou]:https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;headerlink&quot; title=&quot;链接&quot;&gt;&lt;/a&gt;链接&lt;/h2&gt;&lt;p&gt;###链接外部URL&lt;br&gt;|#|语法|效果|&lt;br&gt;|—|—-|—–&lt;br&gt;|1|&lt;code&gt;[我的博客](http://blog.csdn.net/guodongxiaren &amp;quot;悬停显示&amp;quot;)&lt;/code&gt;|&lt;a href=&quot;http://blog.csdn.net/guodongxiaren&quot; title=&quot;悬停显示&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的博客&lt;/a&gt;&lt;br&gt;|2|&lt;code&gt;[我的知乎][zhihu]&lt;/code&gt;|&lt;a href=&quot;https://www.zhihu.com/people/jellywong&quot; title=&quot;我的知乎，欢迎关注&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的知乎&lt;/a&gt;&lt;br&gt;|2|&lt;code&gt;[zhihu]:https://www.zhihu.com/people/jellywong &amp;quot;我的知乎，欢迎关注&amp;quot;&lt;/code&gt;|   &lt;/p&gt;
+&lt;p&gt;语法2由两部分组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一部分使用两个中括号，[ ]里的标识符（本例中zhihu），可以是数字，字母等的组合，标识符上下对应就行了（&lt;strong&gt;姑且称之为URL标识符&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;第二部分标记实际URL。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用URL标识符能达到复用的目的，一般把全文所有的URL标识符统一放在文章末尾，这样看起来比较干净。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;URL标识符是我起的名字，不知道是否准确。囧。。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;###链接本仓库里的URL&lt;br&gt;|语法|效果|&lt;br&gt;|—-|—–&lt;br&gt;|&lt;code&gt;[我的简介]|(/example/profile.md)&lt;/code&gt;|&lt;a href=&quot;/example/profile.md&quot;&gt;我的简介&lt;/a&gt;&lt;br&gt;|&lt;code&gt;[Book]|(./Book)&lt;/code&gt;|&lt;a href=&quot;/Book&quot;&gt;Book&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###图片链接&lt;br&gt;给图片加链接的本质是混合图片显示语法和普通的链接语法。普通的链接中[ ]内部是链接要显示的文本，而图片链接[ ]里面则是要显示的图片。&lt;br&gt;直接混合两种语法当然可以，但是十分啰嗦，为此我们可以使用URL标识符的形式。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;#&lt;/th&gt;
+&lt;th&gt;语法&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[![weibo-logo]](http://weibo.com/linpiaochen)&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;a href=&quot;http://weibo.com/linpiaochen&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;/img/weibo.png&quot; alt=&quot;weibo-logo&quot; title=&quot;点击图片进入我的微博&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[![](/img/zhihu.png &amp;quot;我的知乎，欢迎关注&amp;quot;)][zhihu]&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;a href=&quot;https://www.zhihu.com/people/jellywong&quot; title=&quot;我的知乎，欢迎关注&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;/img/zhihu.png&quot; alt=&quot;&quot; title=&quot;我的知乎，欢迎关注&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[![csdn-logo]][csdn]&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;a href=&quot;http://blog.csdn.net/guodongxiaren&quot; title=&quot;我的博客&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;/img/csdn.png&quot; alt=&quot;csdn-logo&quot; title=&quot;我的CSDN博客&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;因为图片本身和链接本身都支持URL标识符的形式，所以图片链接也可以很简洁（见例3）。&lt;br&gt;注意，此时鼠标悬停时显示的文字是图片的title，而非链接本身的title了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文URL标识符都放置于文末&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;###锚点&lt;br&gt;其实呢，每一个标题都是一个锚点，和HTML的锚点（&lt;code&gt;#&lt;/code&gt;）类似，比如我们 &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;语法&lt;/th&gt;
+&lt;th&gt;效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[回到顶部](#readme)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;#readme&quot;&gt;回到顶部&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;不过要注意，标题中的英文字母都被转化为&lt;strong&gt;小写字母&lt;/strong&gt;了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以前GitHub对中文支持的不好，所以中文标题不能正确识别为锚点，但是现在已经没问题啦！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##列表&lt;/p&gt;
+&lt;p&gt;###无序列表&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;昵称：果冻虾仁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;别名：隔壁老王&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;英文名：Jelly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;###多级无序列表&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;编程语言&lt;ul&gt;
+&lt;li&gt;脚本语言&lt;ul&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;###有序列表&lt;/p&gt;
+&lt;p&gt;####一般效果&lt;br&gt;就是在数字后面加一个点，再加一个空格。不过看起来起来可能不够明显。&lt;br&gt;面向对象的三个基本特征：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;封装&lt;/li&gt;
+&lt;li&gt;继承&lt;/li&gt;
+&lt;li&gt;多态&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;####有序列表自动排序&lt;br&gt;也可以在第一行指定&lt;code&gt;1.&lt;/code&gt;，而接下来的几行用星号&lt;code&gt;*&lt;/code&gt;（或者继续用数字1. ）就可以了，它会自动显示成2、3、4……。&lt;br&gt;面向对象的七大原则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;开闭原则&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;里氏转换原则&lt;/li&gt;
+&lt;li&gt;依赖倒转原则&lt;/li&gt;
+&lt;li&gt;接口隔离原则&lt;/li&gt;
+&lt;li&gt;组合/聚合复用原则&lt;/li&gt;
+&lt;li&gt;“迪米特”法则&lt;/li&gt;
+&lt;li&gt;单一职责原则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;####多级有序列表&lt;br&gt;和无序列表一样，有序列表也有多级结构：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;这是一级的有序列表，数字1还是1&lt;ol&gt;
+&lt;li&gt;这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字&lt;ol&gt;
+&lt;li&gt;这是三级的有序列表，数字在显示的时候变成了英文字母&lt;ol&gt;
+&lt;li&gt;四级的有序列表显示效果，就不再变化了，依旧是英文字母&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;复选框列表&quot;&gt;&lt;a href=&quot;#复选框列表&quot; class=&quot;headerlink&quot; title=&quot;复选框列表&quot;&gt;&lt;/a&gt;复选框列表&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;[x] 需求分析&lt;/li&gt;
+&lt;li&gt;[x] 系统设计&lt;/li&gt;
+&lt;li&gt;[x] 详细设计&lt;/li&gt;
+&lt;li&gt;[ ] 编码&lt;/li&gt;
+&lt;li&gt;[ ] 测试&lt;/li&gt;
+&lt;li&gt;[ ] 交付&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;您可以使用这个功能来标注某个项目各项任务的完成情况。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在GitHub的&lt;strong&gt;issue&lt;/strong&gt;中使用该语法是可以实时点击复选框来勾选或解除勾选的，而无需修改issue原文。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##块引用&lt;/p&gt;
+&lt;p&gt;###常用于引用文本&lt;/p&gt;
+&lt;p&gt;####文本摘自《深入理解计算机系统》P27&lt;br&gt;　令人吃惊的是，在哪种字节顺序是合适的这个问题上，人们表现得非常情绪化。实际上术语“little endian”（小端）和“big endian”（大端）出自Jonathan Swift的《格利佛游记》一书，其中交战的两个派别无法就应该从哪一端打开一个半熟的鸡蛋达成一致。因此，争论沦为关于社会政治的争论。只要选择了一种规则并且始终如一的坚持，其实对于哪种字节排序的选择都是任意的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;“端”（endian）的起源&lt;/strong&gt;&lt;br&gt;以下是Jonathan Swift在1726年关于大小端之争历史的描述：&lt;br&gt;“……下面我要告诉你的是，Lilliput和Blefuscu这两大强国在过去36个月里一直在苦战。战争开始是由于以下的原因：我们大家都认为，吃鸡蛋前，原始的方法是打破鸡蛋较大的一端，可是当今的皇帝的祖父小时候吃鸡蛋，一次按古法打鸡蛋时碰巧将一个手指弄破了，因此他的父亲，当时的皇帝，就下了一道敕令，命令全体臣民吃鸡蛋时打破较小的一端，违令者重罚。”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;###块引用有多级结构&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据结构&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;树&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;二叉树&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;平衡二叉树&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;满二叉树&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;代码高亮&quot;&gt;&lt;a href=&quot;#代码高亮&quot; class=&quot;headerlink&quot; title=&quot;代码高亮&quot;&gt;&lt;/a&gt;代码高亮&lt;/h2&gt;&lt;p&gt;在三个反引号后面加上编程语言的名字，另起一行开始写代码，最后一行再加上三个反引号。&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[]args)&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125; &lt;span class=&quot;comment&quot;&gt;//Java&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; argc, &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; *argv[])&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;//C&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;hello GitHub&quot;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;#Bash&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.getElementById(&lt;span class=&quot;string&quot;&gt;&quot;myH1&quot;&lt;/span&gt;).innerHTML=&lt;span class=&quot;string&quot;&gt;&quot;Welcome to my Homepage&quot;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;//javascipt&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt; &amp;amp;&lt;span class=&quot;keyword&quot;&gt;operator&lt;/span&gt;+(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;&amp;amp; A,&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;&amp;amp; B) &lt;span class=&quot;comment&quot;&gt;//cpp&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;表格&quot;&gt;&lt;a href=&quot;#表格&quot; class=&quot;headerlink&quot; title=&quot;表格&quot;&gt;&lt;/a&gt;表格&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;表头1&lt;/th&gt;
+&lt;th&gt;表头2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;表格单元&lt;/td&gt;
+&lt;td&gt;表格单元 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;表格单元&lt;/td&gt;
+&lt;td&gt;表格单元 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;表头1&lt;/th&gt;
+&lt;th&gt;表头2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;表格单元&lt;/td&gt;
+&lt;td&gt;表格单元&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;表格单元&lt;/td&gt;
+&lt;td&gt;表格单元&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;###对齐&lt;br&gt;表格可以指定对齐方式&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;左对齐&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;居中&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;右对齐&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;col 3 is&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;some wordy text&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;$1600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;col 2 is&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;centered&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;$12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;zebra stripes&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;are neat&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;$1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;###混合其他语法&lt;br&gt;表格单元中的内容可以和其他大多数GFM语法配合使用，如：  &lt;/p&gt;
+&lt;p&gt;####使用普通文本的删除线，斜体等效果&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名字&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Help&lt;/td&gt;
+&lt;td&gt;&lt;del&gt;Display the&lt;/del&gt; help window.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Close&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;Closes&lt;/em&gt; a window&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;####表格中嵌入图片（链接）&lt;br&gt;其实前面介绍图片显示、图片链接的时候为了清晰就是放在在表格中显示的。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;图片&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&quot;http://www.baidu.com/img/bdlogo.gif&quot; alt=&quot;baidu&quot; title=&quot;百度logo&quot;&gt;&lt;/td&gt;
+&lt;td&gt;百度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;表情&quot;&gt;&lt;a href=&quot;#表情&quot; class=&quot;headerlink&quot; title=&quot;表情&quot;&gt;&lt;/a&gt;表情&lt;/h2&gt;&lt;p&gt;Github的Markdown语法支持添加emoji表情，输入不同的符号码（两个冒号包围的字符）可以显示出不同的表情。&lt;/p&gt;
+&lt;p&gt;比如&lt;code&gt;:blush:&lt;/code&gt;，可以显示:blush:。&lt;/p&gt;
+&lt;p&gt;具体每一个表情的符号码，可以查询GitHub的官方网页&lt;a href=&quot;http://www.emoji-cheat-sheet.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.emoji-cheat-sheet.com&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;但是这个网页每次都打开&lt;strong&gt;奇慢&lt;/strong&gt;。。所以我整理到了本repo中，大家可以直接在此查看&lt;a href=&quot;./emoji.md&quot;&gt;emoji&lt;/a&gt;。&lt;/p&gt;
+&lt;hr&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###　　　　　　　　　　　　Author:果冻虾仁&lt;/p&gt;
+&lt;p&gt;###　　　　　　　　　 E-mail:Jelly.K.Wang@qq.com&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote-center&quot;&gt;blah blah blah&lt;/block
+    
+    </summary>
+    
     
   </entry>
   

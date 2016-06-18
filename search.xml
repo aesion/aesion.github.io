@@ -13,18 +13,412 @@
 </blockquote>
 <p>&emsp; 首先简单介绍下Retrofit这个框架，Retrofit是底层是基于Okhttp的也就是说用法和<code>Okhttp</code>很相似；Retrofit它是一个HTTP请求工具，和Google开发的Volley功能上非常相似，这里有<a href="http://bxbxbai.github.io/2014/12/24/read-volley-source-code/" target="_blank" rel="external">Volley</a>的源码解析，但是使用上很不相似。Retrofit使用起来更简单，Volley使用上更加原始而且符合使用者的直觉，其实我觉得如果对自己Volley封装一下也可以像Retrofit那样的简单的使用；</p>
 <h2 id="如何使用Retrofit"><a href="#如何使用Retrofit" class="headerlink" title="如何使用Retrofit"></a>如何使用Retrofit</h2><p>&emsp; 第一步当然是导包了，需要导入的包如下：</p>
-<pre><code>compile &apos;io.reactivex:rxjava:1.1.0&apos;
-compile &apos;io.reactivex:rxandroid:1.1.0&apos;
-compile &apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&apos;
-compile &apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&apos;
-compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&apos;
-compile &apos;com.squareup.retrofit2:converter-scalars:2.0.0&apos;
-compile &apos;com.google.code.gson:gson:2.6.2&apos;
-</code></pre><p>这里需要值得注意的是导入的retrofit2包的版本必须要一致，否则就会报错，我跳过的坑</p>
+<pre><code>compile &apos;io.reactivex:rxjava:1.1.0&apos;//Rx的包
+compile &apos;io.reactivex:rxandroid:1.1.0&apos;//Rx的包
+compile &apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&apos;//Retrofit2所需要的包
+compile &apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&apos;//ConverterFactory的Gson依赖包
+compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&apos;//CallAdapterFactory的Rx依赖包
+compile &apos;com.squareup.retrofit2:converter-scalars:2.0.0&apos;//ConverterFactory的String依赖包
+compile &apos;com.google.code.gson:gson:2.6.2&apos;//Gosn解析包
+</code></pre><p>这里需要值得注意的是导入的retrofit2包的<strong>版本必须要一致</strong>，否则就会报错，我跳过的坑大家就不要再跳了</p>
 <p>&emsp; 首先定义我们请求的Api，我们假设是这样的 </p>
 <pre><code>http://106.3.227.33/pulamsi/mobileLogin/submit.html
-</code></pre><a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RequestSerives</span> </span>&#123;</span><br><span class="line">   	<span class="meta">@POST</span>(<span class="string">"mobileLogin/submit.html"</span>)</span><br><span class="line">   	<span class="function">Call&lt;String&gt; <span class="title">getString</span><span class="params">(@Query(<span class="string">"loginname"</span>)</span> String loginname,</span><br><span class="line">                          @<span class="title">Query</span><span class="params">(<span class="string">"nloginpwd"</span>)</span> String nloginpwd)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+</code></pre><p>与Okhttp不同的是，Retrofit需要定义一个接口，用来返回我们的Call对象，这里示范的是Post请求：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RequestSerives</span> </span>&#123;</span><br><span class="line">   	<span class="meta">@POST</span>(<span class="string">"mobileLogin/submit.html"</span>)</span><br><span class="line">   	<span class="function">Call&lt;String&gt; <span class="title">getString</span><span class="params">(@Query(<span class="string">"loginname"</span>)</span> String loginname,</span><br><span class="line">                          @<span class="title">Query</span><span class="params">(<span class="string">"nloginpwd"</span>)</span> String nloginpwd)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>细心的同学可能注意到了，这段代码用了两个注解，我们一一来解答；</p>
+<p>Retrofit提供的请求方式注解有<code>@GET</code>和<code>@POST</code>，参数注解有<code>@PATH</code>和<code>@Query</code>等，我们只介绍常用的;前两个顾名思义就是定义你的请求方式<code>Get or Post</code>，后面的<code>@PATH</code>指的是通过参数填充完整的路径，一般用法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GET</span>(<span class="string">"&#123;name&#125;"</span>)</span><br><span class="line">   <span class="function">Call&lt;User&gt; <span class="title">getUser</span><span class="params">(@Path(<span class="string">"name"</span>)</span> String name)</span>;</span><br></pre></td></tr></table></figure>
+<p>这里的参数username会被填充至<code>{name}</code>中，形成完整的Url请求地址，<code>{name}</code>相当于一个占位符；</p>
+<p><code>@Query</code>就是我们的请求的键值对的设置，我们构建Call对象的时候会传入此参数，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@POST</span>(<span class="string">"mobileLogin/submit.html"</span>)</span><br><span class="line">   	<span class="function">Call&lt;String&gt; <span class="title">getString</span><span class="params">(@Query(<span class="string">"loginname"</span>)</span> String loginname,</span><br><span class="line">                          @<span class="title">Query</span><span class="params">(<span class="string">"nloginpwd"</span>)</span> String nloginpwd)</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这里<code>@Query(&quot;loginname&quot;)</code>就是键，后面的<code>loginname</code>就是具体的值了，值得注意的是Get和Post请求，都是这样填充参数的；</p>
+<p>接口写完了之后我们需要来定义Retrofit对象来进行请求了；</p>
+<h3 id="创建一个Retrofit-对象"><a href="#创建一个Retrofit-对象" class="headerlink" title="创建一个Retrofit 对象"></a>创建一个Retrofit 对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">               .baseUrl(<span class="string">"http://106.3.227.33/pulamsi/"</span>)</span><br><span class="line">               <span class="comment">//增加返回值为String的支持</span></span><br><span class="line">               .addConverterFactory(ScalarsConverterFactory.create())</span><br><span class="line">               <span class="comment">//增加返回值为Gson的支持(以实体类返回)</span></span><br><span class="line">               .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">               <span class="comment">//增加返回值为Oservable&lt;T&gt;的支持</span></span><br><span class="line">               .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</span><br><span class="line">               .build();</span><br></pre></td></tr></table></figure>
+<p>这里的<code>baseurl</code>加上之前<code>@POST(&quot;mobileLogin/submit.html&quot;)</code>定义的参数形成完整的请求地址；</p>
+<p><code>addConverterFactory(ScalarsConverterFactory.create())</code>的意思是构建了一个返回支持，如果你的Call对象的泛型接收另外的格式需要添加另外的支持，上述代码已经列出；</p>
+<p>接下来我们用这个<code>Retrofit</code>对象创建一个<code>RequestSerives</code>接口对象，也就是我们之前定义的那个接口，并且得到我们的Call对象；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RequestSerives requestSerives = retrofit.create(RequestSerives.class);<span class="comment">//这里采用的是Java的动态代理模式</span></span><br><span class="line">Call&lt;String&gt; call = requestSerives.getString(<span class="string">"userName"</span>, <span class="string">"1234"</span>);<span class="comment">//传入我们请求的键值对的值</span></span><br></pre></td></tr></table></figure>
+<p>利用得到的Call对象，然后我们就发出网络请求了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> call.enqueue(<span class="keyword">new</span> Callback&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;String&gt; call, Response&lt;String&gt; response)</span> </span>&#123;</span><br><span class="line">        Log.e(<span class="string">"成功"</span>,response.body().toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;String&gt; call, Throwable t)</span> </span>&#123;</span><br><span class="line">        Log.e(<span class="string">"失败"</span>,<span class="string">"失败"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>请求成功会调用<code>onResponse</code>方法，并且请求成功的值在<code>response.body()</code>中，失败则会调用<code>onFailure</code>，怎么样，是不是很简单呢。</p>
+<p>下面我贴出完整的代码，主要是两个类<strong>RequestSerives</strong>和<strong>MainActivity</strong>；</p>
+<hr>
+<h3 id="RequestSerives-class"><a href="#RequestSerives-class" class="headerlink" title="RequestSerives.class"></a>RequestSerives.class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> retrofit2.Call;</span><br><span class="line"><span class="keyword">import</span> retrofit2.http.POST;</span><br><span class="line"><span class="keyword">import</span> retrofit2.http.Query;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">* User: Daidingkang(ddk19941017@Gmail.com)</span><br><span class="line">* Date: 2016-06-15</span><br><span class="line">* Time: 11:22</span><br><span class="line">* FIXME</span><br><span class="line">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RequestSerives</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   	<span class="meta">@POST</span>(<span class="string">"mobileLogin/submit.html"</span>)</span><br><span class="line">   	<span class="function">Call&lt;String&gt; <span class="title">getString</span><span class="params">(@Query(<span class="string">"loginname"</span>)</span> String loginname,</span><br><span class="line">                          @<span class="title">Query</span><span class="params">(<span class="string">"nloginpwd"</span>)</span> String nloginpwd)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="MainActivity-class"><a href="#MainActivity-class" class="headerlink" title="MainActivity.class"></a>MainActivity.class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">                .baseUrl(<span class="string">"http://106.3.227.33/pulamsi/"</span>)</span><br><span class="line">                .addConverterFactory(ScalarsConverterFactory.create())</span><br><span class="line">                .build();</span><br><span class="line">        RequestSerives requestSerives = retrofit.create(RequestSerives.class);</span><br><span class="line">        Call&lt;String&gt; call = requestSerives.getString(<span class="string">"13288453023"</span>, <span class="string">"654"</span>);</span><br><span class="line">        call.enqueue(<span class="keyword">new</span> Callback&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;String&gt; call, Response&lt;String&gt; response)</span> </span>&#123;</span><br><span class="line">                Log.e(<span class="string">"成功"</span>,response.body().toString());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;String&gt; call, Throwable t)</span> </span>&#123;</span><br><span class="line">                Log.e(<span class="string">"失败"</span>,<span class="string">"失败"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MD]]></title>
+      <url>http://yoursite.com/2016/06/17/README2/</url>
+      <content type="html"><![CDATA[<p>###　　　　　　　　　　　　Author:果冻虾仁</p>
+<p>###　　　　　　　　　 E-mail:Jelly.K.Wang@qq.com</p>
+<blockquote class="blockquote-center">blah blah blah</blockquote>
+
+
+<p>##目录</p>
+<ul>
+<li><a href="#横线">横线</a></li>
+<li><a href="#标题">标题</a></li>
+<li><a href="#文本">文本</a><ul>
+<li>普通文本</li>
+<li>单行文本</li>
+<li>多行文本</li>
+<li>文字高亮</li>
+<li>换行</li>
+<li>斜体</li>
+<li>粗体</li>
+<li>删除线</li>
+</ul>
+</li>
+<li><a href="#图片">图片</a><ul>
+<li>来源于网络的图片</li>
+<li>GitHub仓库中的图片</li>
+</ul>
+</li>
+<li><a href="#链接">链接</a> <ul>
+<li>文字超链接<ul>
+<li>链接外部URL</li>
+<li>链接本仓库里的URL</li>
+</ul>
+</li>
+<li>锚点</li>
+<li><a href="#图片链接">图片链接</a></li>
+</ul>
+</li>
+<li><a href="#列表">列表</a><ul>
+<li>无序列表</li>
+<li>有序列表</li>
+<li>复选框列表</li>
+</ul>
+</li>
+<li><a href="#块引用">块引用</a></li>
+<li><a href="#代码高亮">代码高亮</a></li>
+<li><a href="#表格">表格</a> </li>
+<li><a href="#表情">表情</a></li>
+</ul>
+<h2 id="横线"><a href="#横线" class="headerlink" title="横线"></a>横线</h2><p><em>*</em>、—、___可以显示横线效果</p>
+<h2 id=""><a href="#" class="headerlink" title="*"></a><em>*</em></h2><hr>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>#一级标题</p>
+<p>##二级标题</p>
+<p>###三级标题</p>
+<p>####四级标题</p>
+<p>#####五级标题</p>
+<p>######六级标题</p>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><p>###普通文本<br>这是一段普通的文本</p>
+<p>###单行文本</p>
+<pre><code>Hello,大家好，我是果冻虾仁。
+</code></pre><p>在一行开头加入1个Tab或者4个空格。</p>
+<p>###文本块</p>
+<p>####语法1<br>在连续几行的文本开头加入1个Tab或者4个空格。</p>
+<pre><code>欢迎到访
+很高兴见到您
+祝您，早上好，中午好，下午好，晚安
+</code></pre><p>####语法2<br>使用一对各三个的反引号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">欢迎到访</span><br><span class="line">我是C++码农</span><br><span class="line">你可以在知乎、CSDN、简书搜索【果冻虾仁】找到我</span><br></pre></td></tr></table></figure></p>
+<p>该语法也可以实现代码高亮，见<a href="#代码高亮">代码高亮</a></p>
+<p>###文字高亮<br>文字高亮功能能使行内部分文字高亮，使用一对反引号。<br>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`linux` `网络编程` `socket` `epoll`</span><br></pre></td></tr></table></figure></p>
+<p>效果：<code>linux</code> <code>网络编程</code> <code>socket</code> <code>epoll</code></p>
+<p>也适合做一篇文章的tag</p>
+<p>####换行<br>直接回车不能换行，<br>可以在上一行文本后面补两个空格，<br>这样下一行的文本就换行了。</p>
+<p>或者就是在两行文本直接加一个空行。</p>
+<p>也能实现换行效果，不过这个行间距有点大。</p>
+<p>####斜体、粗体、删除线<br>|语法|效果|<br>|—-|—–<br>|<code>*斜体1*</code>|<em>斜体1</em><br>|<code>_斜体2_</code>|<em>斜体2</em><br>|<code>**粗体1**</code>|<strong>粗体1</strong><br>|<code>__粗体2__</code>|<strong>粗体2</strong><br>|<code>这是一个 ~~删除线~~</code>|这是一个 <del>删除线</del><br>|<code>***斜粗体1***</code>|<strong><em>斜粗体1</em></strong><br>|<code>___斜粗体2___</code>|<strong><em>斜粗体2</em></strong><br>|<code>***~~斜粗体删除线1~~***</code>|<strong><em><del>斜粗体删除线1</del></em></strong><br>|<code>~~***斜粗体删除线2***~~</code>|<del><strong><em>斜粗体删除线2</em></strong></del></p>
+<p>斜体、粗体、删除线可混合使用</p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![alt](URL title)</span><br></pre></td></tr></table></figure></p>
+<p>alt和title即对应HTML中的alt和title属性（都可省略）：</p>
+<ul>
+<li>alt表示图片显示失败时的替换文本</li>
+<li>title表示鼠标悬停在图片时的显示文本（注意这里要加引号）</li>
+</ul>
+<p>URL即图片的url地址，如果引用本仓库中的图片，直接使用<strong>相对路径</strong>就可了，如果引用其他github仓库中的图片要注意格式，即：<code>仓库地址/raw/分支名/图片路径</code>，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>![baidu](http://www.baidu.com/img/bdlogo.gif &quot;百度logo&quot;)</code></td>
+<td><img src="http://www.baidu.com/img/bdlogo.gif" alt="baidu" title="百度logo"></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>![][foryou]</code></td>
+<td><img src="https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>注意例2的写法使用了<strong>URL标识符</strong>的形式，在<a href="#链接">链接</a>一节有介绍。</p>
+<blockquote>
+<p>在文末有foryou的定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[foryou]:https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>###链接外部URL<br>|#|语法|效果|<br>|—|—-|—–<br>|1|<code>[我的博客](http://blog.csdn.net/guodongxiaren &quot;悬停显示&quot;)</code>|<a href="http://blog.csdn.net/guodongxiaren" title="悬停显示" target="_blank" rel="external">我的博客</a><br>|2|<code>[我的知乎][zhihu]</code>|<a href="https://www.zhihu.com/people/jellywong" title="我的知乎，欢迎关注" target="_blank" rel="external">我的知乎</a><br>|2|<code>[zhihu]:https://www.zhihu.com/people/jellywong &quot;我的知乎，欢迎关注&quot;</code>|   </p>
+<p>语法2由两部分组成：</p>
+<ul>
+<li>第一部分使用两个中括号，[ ]里的标识符（本例中zhihu），可以是数字，字母等的组合，标识符上下对应就行了（<strong>姑且称之为URL标识符</strong>）</li>
+<li>第二部分标记实际URL。</li>
+</ul>
+<blockquote>
+<p>使用URL标识符能达到复用的目的，一般把全文所有的URL标识符统一放在文章末尾，这样看起来比较干净。</p>
+<blockquote>
+<p>URL标识符是我起的名字，不知道是否准确。囧。。</p>
+</blockquote>
+</blockquote>
+<p>###链接本仓库里的URL<br>|语法|效果|<br>|—-|—–<br>|<code>[我的简介]|(/example/profile.md)</code>|<a href="/example/profile.md">我的简介</a><br>|<code>[Book]|(./Book)</code>|<a href="/Book">Book</a></p>
+<p>###图片链接<br>给图片加链接的本质是混合图片显示语法和普通的链接语法。普通的链接中[ ]内部是链接要显示的文本，而图片链接[ ]里面则是要显示的图片。<br>直接混合两种语法当然可以，但是十分啰嗦，为此我们可以使用URL标识符的形式。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>语法</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>[![weibo-logo]](http://weibo.com/linpiaochen)</code></td>
+<td style="text-align:center"><a href="http://weibo.com/linpiaochen" target="_blank" rel="external"><img src="/img/weibo.png" alt="weibo-logo" title="点击图片进入我的微博"></a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>[![](/img/zhihu.png &quot;我的知乎，欢迎关注&quot;)][zhihu]</code></td>
+<td style="text-align:center"><a href="https://www.zhihu.com/people/jellywong" title="我的知乎，欢迎关注" target="_blank" rel="external"><img src="/img/zhihu.png" alt="" title="我的知乎，欢迎关注"></a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>[![csdn-logo]][csdn]</code></td>
+<td style="text-align:center"><a href="http://blog.csdn.net/guodongxiaren" title="我的博客" target="_blank" rel="external"><img src="/img/csdn.png" alt="csdn-logo" title="我的CSDN博客"></a></td>
+</tr>
+</tbody>
+</table>
+<p>因为图片本身和链接本身都支持URL标识符的形式，所以图片链接也可以很简洁（见例3）。<br>注意，此时鼠标悬停时显示的文字是图片的title，而非链接本身的title了。</p>
+<blockquote>
+<p>本文URL标识符都放置于文末</p>
+</blockquote>
+<p>###锚点<br>其实呢，每一个标题都是一个锚点，和HTML的锚点（<code>#</code>）类似，比如我们 </p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[回到顶部](#readme)</code></td>
+<td><a href="#readme">回到顶部</a></td>
+</tr>
+</tbody>
+</table>
+<p>不过要注意，标题中的英文字母都被转化为<strong>小写字母</strong>了。</p>
+<blockquote>
+<p>以前GitHub对中文支持的不好，所以中文标题不能正确识别为锚点，但是现在已经没问题啦！</p>
+</blockquote>
+<p>##列表</p>
+<p>###无序列表</p>
+<ul>
+<li>昵称：果冻虾仁</li>
+</ul>
+<ul>
+<li>别名：隔壁老王</li>
+</ul>
+<ul>
+<li>英文名：Jelly</li>
+</ul>
+<p>###多级无序列表</p>
+<ul>
+<li>编程语言<ul>
+<li>脚本语言<ul>
+<li>Python</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###有序列表</p>
+<p>####一般效果<br>就是在数字后面加一个点，再加一个空格。不过看起来起来可能不够明显。<br>面向对象的三个基本特征：</p>
+<ol>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ol>
+<p>####有序列表自动排序<br>也可以在第一行指定<code>1.</code>，而接下来的几行用星号<code>*</code>（或者继续用数字1. ）就可以了，它会自动显示成2、3、4……。<br>面向对象的七大原则：</p>
+<ol>
+<li>开闭原则</li>
+</ol>
+<ul>
+<li>里氏转换原则</li>
+<li>依赖倒转原则</li>
+<li>接口隔离原则</li>
+<li>组合/聚合复用原则</li>
+<li>“迪米特”法则</li>
+<li>单一职责原则</li>
+</ul>
+<p>####多级有序列表<br>和无序列表一样，有序列表也有多级结构：  </p>
+<ol>
+<li>这是一级的有序列表，数字1还是1<ol>
+<li>这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字<ol>
+<li>这是三级的有序列表，数字在显示的时候变成了英文字母<ol>
+<li>四级的有序列表显示效果，就不再变化了，依旧是英文字母</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="复选框列表"><a href="#复选框列表" class="headerlink" title="复选框列表"></a>复选框列表</h3><ul>
+<li>[x] 需求分析</li>
+<li>[x] 系统设计</li>
+<li>[x] 详细设计</li>
+<li>[ ] 编码</li>
+<li>[ ] 测试</li>
+<li>[ ] 交付</li>
+</ul>
+<p>您可以使用这个功能来标注某个项目各项任务的完成情况。</p>
+<blockquote>
+<p>Tip:</p>
+<blockquote>
+<p>在GitHub的<strong>issue</strong>中使用该语法是可以实时点击复选框来勾选或解除勾选的，而无需修改issue原文。</p>
+</blockquote>
+</blockquote>
+<p>##块引用</p>
+<p>###常用于引用文本</p>
+<p>####文本摘自《深入理解计算机系统》P27<br>　令人吃惊的是，在哪种字节顺序是合适的这个问题上，人们表现得非常情绪化。实际上术语“little endian”（小端）和“big endian”（大端）出自Jonathan Swift的《格利佛游记》一书，其中交战的两个派别无法就应该从哪一端打开一个半熟的鸡蛋达成一致。因此，争论沦为关于社会政治的争论。只要选择了一种规则并且始终如一的坚持，其实对于哪种字节排序的选择都是任意的。</p>
+<blockquote>
+<p><strong>“端”（endian）的起源</strong><br>以下是Jonathan Swift在1726年关于大小端之争历史的描述：<br>“……下面我要告诉你的是，Lilliput和Blefuscu这两大强国在过去36个月里一直在苦战。战争开始是由于以下的原因：我们大家都认为，吃鸡蛋前，原始的方法是打破鸡蛋较大的一端，可是当今的皇帝的祖父小时候吃鸡蛋，一次按古法打鸡蛋时碰巧将一个手指弄破了，因此他的父亲，当时的皇帝，就下了一道敕令，命令全体臣民吃鸡蛋时打破较小的一端，违令者重罚。”</p>
+</blockquote>
+<p>###块引用有多级结构</p>
+<blockquote>
+<p>数据结构</p>
+<blockquote>
+<p>树</p>
+<blockquote>
+<p>二叉树</p>
+<blockquote>
+<p>平衡二叉树</p>
+<blockquote>
+<p>满二叉树</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><p>在三个反引号后面加上编程语言的名字，另起一行开始写代码，最后一行再加上三个反引号。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[]args)</span></span>&#123;&#125; <span class="comment">//Java</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> <span class="comment">//C</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello GitHub"</span> <span class="comment">#Bash</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myH1"</span>).innerHTML=<span class="string">"Welcome to my Homepage"</span>; <span class="comment">//javascipt</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> &amp;<span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="built_in">string</span>&amp; A,<span class="keyword">const</span> <span class="built_in">string</span>&amp; B) <span class="comment">//cpp</span></span><br></pre></td></tr></table></figure>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table>
+<thead>
+<tr>
+<th>表头1</th>
+<th>表头2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表格单元</td>
+<td>表格单元 </td>
+</tr>
+<tr>
+<td>表格单元</td>
+<td>表格单元 </td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th>表头2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表格单元</td>
+<td>表格单元</td>
+</tr>
+<tr>
+<td>表格单元</td>
+<td>表格单元</td>
+</tr>
+</tbody>
+</table>
+<p>###对齐<br>表格可以指定对齐方式</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">左对齐</th>
+<th style="text-align:center">居中</th>
+<th style="text-align:right">右对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">col 3 is</td>
+<td style="text-align:center">some wordy text</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td style="text-align:left">col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td style="text-align:left">zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<p>###混合其他语法<br>表格单元中的内容可以和其他大多数GFM语法配合使用，如：  </p>
+<p>####使用普通文本的删除线，斜体等效果</p>
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help</td>
+<td><del>Display the</del> help window.</td>
+</tr>
+<tr>
+<td>Close</td>
+<td><em>Closes</em> a window</td>
+</tr>
+</tbody>
+</table>
+<p>####表格中嵌入图片（链接）<br>其实前面介绍图片显示、图片链接的时候为了清晰就是放在在表格中显示的。</p>
+<table>
+<thead>
+<tr>
+<th>图片</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="http://www.baidu.com/img/bdlogo.gif" alt="baidu" title="百度logo"></td>
+<td>百度</td>
+</tr>
+</tbody>
+</table>
+<h2 id="表情"><a href="#表情" class="headerlink" title="表情"></a>表情</h2><p>Github的Markdown语法支持添加emoji表情，输入不同的符号码（两个冒号包围的字符）可以显示出不同的表情。</p>
+<p>比如<code>:blush:</code>，可以显示:blush:。</p>
+<p>具体每一个表情的符号码，可以查询GitHub的官方网页<a href="http://www.emoji-cheat-sheet.com" target="_blank" rel="external">http://www.emoji-cheat-sheet.com</a>。</p>
+<p>但是这个网页每次都打开<strong>奇慢</strong>。。所以我整理到了本repo中，大家可以直接在此查看<a href="./emoji.md">emoji</a>。</p>
+<hr>
+]]></content>
     </entry>
     
     <entry>
