@@ -13,8 +13,7 @@
 </blockquote>
 <p>&emsp; 首先简单介绍下Retrofit这个框架，Retrofit是底层是基于Okhttp的也就是说用法和<code>Okhttp</code>很相似；Retrofit它是一个HTTP请求工具，和Google开发的Volley功能上非常相似，这里有<a href="http://bxbxbai.github.io/2014/12/24/read-volley-source-code/" target="_blank" rel="external">Volley</a>的源码解析，但是使用上很不相似。Retrofit使用起来更简单，Volley使用上更加原始而且符合使用者的直觉，其实我觉得如果对自己Volley封装一下也可以像Retrofit那样的简单的使用；</p>
 <h2 id="如何使用Retrofit"><a href="#如何使用Retrofit" class="headerlink" title="如何使用Retrofit"></a>如何使用Retrofit</h2><p>&emsp; 首先定义我们请求的Api，我们假设是这样的 </p>
-<pre><code>http://106.3.227.33/pulamsi/mobileLogin/submit.html
-</code></pre>]]></content>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//106.3.227.33/pulamsi/mobileLogin/submit.html</span></span><br></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
