@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/17/全新的网络加载框架Retrofit2，上位的小三/index.html">
 <meta property="og:site_name" content="戴定康的博客">
 <meta property="og:description" content="前言:&amp;emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okh">
-<meta property="og:updated_time" content="2016-06-18T02:36:41.575Z">
+<meta property="og:updated_time" content="2016-06-18T03:20:50.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全新的网络加载框架Retrofit2，上位的小三">
 <meta name="twitter:description" content="前言:&amp;emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okh">
@@ -363,7 +363,16 @@
 <p>A type-safe HTTP client for Android and Java<br>翻译：Android和Java的类型安全的HTTP客户端</p>
 </blockquote>
 <p>&emsp; 首先简单介绍下Retrofit这个框架，Retrofit是底层是基于Okhttp的也就是说用法和<code>Okhttp</code>很相似；Retrofit它是一个HTTP请求工具，和Google开发的Volley功能上非常相似，这里有<a href="http://bxbxbai.github.io/2014/12/24/read-volley-source-code/" target="_blank" rel="external">Volley</a>的源码解析，但是使用上很不相似。Retrofit使用起来更简单，Volley使用上更加原始而且符合使用者的直觉，其实我觉得如果对自己Volley封装一下也可以像Retrofit那样的简单的使用；</p>
-<h2 id="如何使用Retrofit"><a href="#如何使用Retrofit" class="headerlink" title="如何使用Retrofit"></a>如何使用Retrofit</h2><p>&emsp; 首先定义我们请求的Api，我们假设是这样的 </p>
+<h2 id="如何使用Retrofit"><a href="#如何使用Retrofit" class="headerlink" title="如何使用Retrofit"></a>如何使用Retrofit</h2><p>&emsp; 第一步当然是导包了，需要导入的包如下：</p>
+<pre><code>compile &apos;io.reactivex:rxjava:1.1.0&apos;
+compile &apos;io.reactivex:rxandroid:1.1.0&apos;
+compile &apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&apos;
+compile &apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&apos;
+compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&apos;
+compile &apos;com.squareup.retrofit2:converter-scalars:2.0.0&apos;
+compile &apos;com.google.code.gson:gson:2.6.2&apos;
+</code></pre><p>这里需要值得注意的是导入的retrofit2包的版本必须要一致，否则就会报错，我跳过的坑</p>
+<p>&emsp; 首先定义我们请求的Api，我们假设是这样的 </p>
 <pre><code>http://106.3.227.33/pulamsi/mobileLogin/submit.html
 </code></pre><a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RequestSerives</span> </span>&#123;</span><br><span class="line">   	<span class="meta">@POST</span>(<span class="string">"mobileLogin/submit.html"</span>)</span><br><span class="line">   	<span class="function">Call&lt;String&gt; <span class="title">getString</span><span class="params">(@Query(<span class="string">"loginname"</span>)</span> String loginname,</span><br><span class="line">                          @<span class="title">Query</span><span class="params">(<span class="string">"nloginpwd"</span>)</span> String nloginpwd)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
