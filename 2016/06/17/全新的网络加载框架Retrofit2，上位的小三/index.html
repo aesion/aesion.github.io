@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="前言:纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Ret">
+<meta name="description" content="前言:&amp;emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="全新的网络加载框架Retrofit2，上位的小三">
 <meta property="og:url" content="http://yoursite.com/2016/06/17/全新的网络加载框架Retrofit2，上位的小三/index.html">
 <meta property="og:site_name" content="戴定康的博客">
-<meta property="og:description" content="前言:纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Ret">
-<meta property="og:updated_time" content="2016-06-17T07:51:55.861Z">
+<meta property="og:description" content="前言:&amp;emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okh">
+<meta property="og:updated_time" content="2016-06-18T02:24:30.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全新的网络加载框架Retrofit2，上位的小三">
-<meta name="twitter:description" content="前言:纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Ret">
+<meta name="twitter:description" content="前言:&amp;emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okh">
 
 
 
@@ -357,8 +357,15 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到android-async-http，再到如今的老将Volley；曾几何时，正是Xutils,Afindl等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式MVP,MVVM蒸蒸日上，Google都已经抛弃了apache，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着Eclipse；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…<br><a id="more"></a></p>
-
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>&emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到<code>android-async-http</code>，再到如今的老将<code>Volley</code>；曾几何时，正是<code>Xutils</code>,<code>Afindl</code>等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式<code>MVP,MVVM</code>蒸蒸日上，Google都已经抛弃了<code>apache</code>，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着<code>Eclipse</code>；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…<br><a id="more"></a></p>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>&emsp; 来自Retrofit的官网介绍</p>
+<blockquote>
+<p>A type-safe HTTP client for Android and Java<br>翻译：Android和Java的类型安全的HTTP客户端</p>
+</blockquote>
+<p>&emsp; 首先简单介绍下Retrofit这个框架，Retrofit是底层是基于Okhttp的也就是说用法和<code>Okhttp</code>很相似；Retrofit它是一个HTTP请求工具，和Google开发的Volley功能上非常相似，这里有<a href="http://bxbxbai.github.io/2014/12/24/read-volley-source-code/" target="_blank" rel="external">Volley</a>的源码解析，但是使用上很不相似。Retrofit使用起来更简单，Volley使用上更加原始而且符合使用者的直觉，其实我觉得如果对自己Volley封装一下也可以像Retrofit那样的简单的使用；</p>
+<h2 id="如何使用Retrofit"><a href="#如何使用Retrofit" class="headerlink" title="如何使用Retrofit"></a>如何使用Retrofit</h2><p>&emsp; 首先定义我们请求的Api，我们假设是这样的 </p>
+<pre><code>http://106.3.227.33/pulamsi/mobileLogin/submit.html
+</code></pre>
       
     </div>
 
@@ -569,7 +576,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题"><span class="nav-number"></span> <span class="nav-text">主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用Retrofit"><span class="nav-number"></span> <span class="nav-text">如何使用Retrofit</span></a></div>
             
           </div>
         </section>
