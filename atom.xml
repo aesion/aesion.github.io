@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-18T07:00:21.935Z</updated>
+  <updated>2016-06-21T02:17:04.937Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/17/%E5%85%A8%E6%96%B0%E7%9A%84%E7%BD%91%E7%BB%9C%E5%8A%A0%E8%BD%BD%E6%A1%86%E6%9E%B6Retrofit2%EF%BC%8C%E4%B8%8A%E4%BD%8D%E7%9A%84%E5%B0%8F%E4%B8%89/"/>
     <id>http://yoursite.com/2016/06/17/全新的网络加载框架Retrofit2，上位的小三/</id>
     <published>2016-06-17T07:42:09.000Z</published>
-    <updated>2016-06-18T07:00:21.935Z</updated>
+    <updated>2016-06-21T02:17:04.937Z</updated>
     
     <content type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言:&quot;&gt;&lt;/a&gt;前言:&lt;/h3&gt;&lt;p&gt;&amp;emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到&lt;code&gt;android-async-http&lt;/code&gt;，再到如今的老将&lt;code&gt;Volley&lt;/code&gt;；曾几何时，正是&lt;code&gt;Xutils&lt;/code&gt;,&lt;code&gt;Afindl&lt;/code&gt;等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式&lt;code&gt;MVP,MVVM&lt;/code&gt;蒸蒸日上，Google都已经抛弃了&lt;code&gt;apache&lt;/code&gt;，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着&lt;code&gt;Eclipse&lt;/code&gt;；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…&lt;/p&gt;
 &lt;h2 id=&quot;主题&quot;&gt;&lt;a href=&quot;#主题&quot; class=&quot;headerlink&quot; title=&quot;主题&quot;&gt;&lt;/a&gt;主题&lt;/h2&gt;&lt;p&gt;&amp;emsp; 来自Retrofit的官网介绍&lt;/p&gt;
@@ -34,9 +34,9 @@ compile &amp;apos;io.reactivex:rxandroid:1.1.0&amp;apos;//Rx的包
 compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;//Retrofit2所需要的包
 compile &amp;apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&amp;apos;//ConverterFactory的Gson依赖包
 compile &amp;apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&amp;apos;//CallAdapterFactory的Rx依赖包
-compile &amp;apos;com.squareup.retrofit2:converter-scalars:2.0.0&amp;apos;//ConverterFactory的String依赖包
+compile &amp;apos;com.squareup.retrofit2:converter-scalars:2.0.0-beta4&amp;apos;//ConverterFactory的String依赖包
 compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;//Gosn解析包
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要值得注意的是导入的retrofit2包的&lt;strong&gt;版本必须要一致&lt;/strong&gt;，否则就会报错，我跳过的坑大家就不要再跳了&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要值得注意的是导入的retrofit2包的&lt;strong&gt;版本必须要一致&lt;/strong&gt;，否则就会报错，我跳过的坑大家就不要再跳了&lt;br&gt;&lt;img src=&quot;\images\retrofit2-error.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&amp;emsp; 首先定义我们请求的Api，我们假设是这样的 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;http://106.3.227.33/pulamsi/mobileLogin/submit.html
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;与Okhttp不同的是，Retrofit需要定义一个接口，用来返回我们的Call对象，这里示范的是Post请求：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RequestSerives&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;meta&quot;&gt;@POST&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;mobileLogin/submit.html&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;function&quot;&gt;Call&amp;lt;String&amp;gt; &lt;span class=&quot;title&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(@Query(&lt;span class=&quot;string&quot;&gt;&quot;loginname&quot;&lt;/span&gt;)&lt;/span&gt; String loginname,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                          @&lt;span class=&quot;title&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;nloginpwd&quot;&lt;/span&gt;)&lt;/span&gt; String nloginpwd)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -78,9 +78,9 @@ compile &amp;apos;io.reactivex:rxandroid:1.1.0&amp;apos;//Rx的包
 compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;//Retrofit2所需要的包
 compile &amp;apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&amp;apos;//ConverterFactory的Gson依赖包
 compile &amp;apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&amp;apos;//CallAdapterFactory的Rx依赖包
-compile &amp;apos;com.squareup.retrofit2:converter-scalars:2.0.0&amp;apos;//ConverterFactory的String依赖包
+compile &amp;apos;com.squareup.retrofit2:converter-scalars:2.0.0-beta4&amp;apos;//ConverterFactory的String依赖包
 compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;//Gosn解析包
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要值得注意的是导入的retrofit2包的&lt;strong&gt;版本必须要一致&lt;/strong&gt;，否则就会报错，我跳过的坑大家就不要再跳了&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要值得注意的是导入的retrofit2包的&lt;strong&gt;版本必须要一致&lt;/strong&gt;，否则就会报错，我跳过的坑大家就不要再跳了&lt;br&gt;&lt;img src=&quot;\images\retrofit2-error.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&amp;emsp; 首先定义我们请求的Api，我们假设是这样的 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;http://106.3.227.33/pulamsi/mobileLogin/submit.html
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;与Okhttp不同的是，Retrofit需要定义一个接口，用来返回我们的Call对象，这里示范的是Post请求：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RequestSerives&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;meta&quot;&gt;@POST&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;mobileLogin/submit.html&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&lt;span class=&quot;function&quot;&gt;Call&amp;lt;String&amp;gt; &lt;span class=&quot;title&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(@Query(&lt;span class=&quot;string&quot;&gt;&quot;loginname&quot;&lt;/span&gt;)&lt;/span&gt; String loginname,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                          @&lt;span class=&quot;title&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;nloginpwd&quot;&lt;/span&gt;)&lt;/span&gt; String nloginpwd)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;

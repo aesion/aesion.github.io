@@ -18,9 +18,9 @@ compile &apos;io.reactivex:rxandroid:1.1.0&apos;//Rx的包
 compile &apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&apos;//Retrofit2所需要的包
 compile &apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&apos;//ConverterFactory的Gson依赖包
 compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&apos;//CallAdapterFactory的Rx依赖包
-compile &apos;com.squareup.retrofit2:converter-scalars:2.0.0&apos;//ConverterFactory的String依赖包
+compile &apos;com.squareup.retrofit2:converter-scalars:2.0.0-beta4&apos;//ConverterFactory的String依赖包
 compile &apos;com.google.code.gson:gson:2.6.2&apos;//Gosn解析包
-</code></pre><p>这里需要值得注意的是导入的retrofit2包的<strong>版本必须要一致</strong>，否则就会报错，我跳过的坑大家就不要再跳了</p>
+</code></pre><p>这里需要值得注意的是导入的retrofit2包的<strong>版本必须要一致</strong>，否则就会报错，我跳过的坑大家就不要再跳了<br><img src="\images\retrofit2-error.png" alt=""></p>
 <p>&emsp; 首先定义我们请求的Api，我们假设是这样的 </p>
 <pre><code>http://106.3.227.33/pulamsi/mobileLogin/submit.html
 </code></pre><p>与Okhttp不同的是，Retrofit需要定义一个接口，用来返回我们的Call对象，这里示范的是Post请求：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RequestSerives</span> </span>&#123;</span><br><span class="line">   	<span class="meta">@POST</span>(<span class="string">"mobileLogin/submit.html"</span>)</span><br><span class="line">   	<span class="function">Call&lt;String&gt; <span class="title">getString</span><span class="params">(@Query(<span class="string">"loginname"</span>)</span> String loginname,</span><br><span class="line">                          @<span class="title">Query</span><span class="params">(<span class="string">"nloginpwd"</span>)</span> String nloginpwd)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
