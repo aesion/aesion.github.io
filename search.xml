@@ -4,6 +4,17 @@
   
     
     <entry>
+      <title><![CDATA[开发笔记]]></title>
+      <url>http://yoursite.com/2016/06/22/note/</url>
+      <content type="html"><![CDATA[<p>&emsp; 本文用于记录开发中遇到的知识点进行记录，方便查阅</p>
+<h2 id="获取scrollview滚动的距离"><a href="#获取scrollview滚动的距离" class="headerlink" title="获取scrollview滚动的距离"></a>获取scrollview滚动的距离</h2><blockquote>
+<p>商品详情页需要渐变</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scrollView.setOnTouchListener(<span class="keyword">this</span>);</span><br><span class="line"><span class="meta">@SuppressLint</span>(<span class="string">"NewApi"</span>)</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (event.getAction() == MotionEvent.ACTION_MOVE) &#123;</span><br><span class="line">        <span class="comment">// 可以监听到ScrollView的滚动事件</span></span><br><span class="line">        System.out.println(scrollView.getScrollY());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[全新的网络加载框架Retrofit2，上位的小三]]></title>
       <url>http://yoursite.com/2016/06/17/Retrofit2-network-framework-parsing/</url>
       <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>&emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到<code>android-async-http</code>，再到如今的老将<code>Volley</code>；曾几何时，正是<code>Xutils</code>,<code>Afindl</code>等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式<code>MVP,MVVM</code>蒸蒸日上，Google都已经抛弃了<code>apache</code>，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着<code>Eclipse</code>；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…</p>
