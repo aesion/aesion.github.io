@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-29T01:49:29.109Z</updated>
+  <updated>2016-06-29T01:52:57.325Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/26/NodeProgressView/"/>
     <id>http://yoursite.com/2016/06/26/NodeProgressView/</id>
     <published>2016-06-26T04:42:09.000Z</published>
-    <updated>2016-06-29T01:49:29.109Z</updated>
+    <updated>2016-06-29T01:52:57.325Z</updated>
     
     <content type="html">&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;h1 id=&quot;作者&quot;&gt;&lt;a href=&quot;#作者&quot; class=&quot;headerlink&quot; title=&quot;作者&quot;&gt;&lt;/a&gt;作者&lt;/h1&gt;&lt;hr&gt;
 &lt;p&gt;戴定康&lt;/p&gt;
@@ -41,7 +41,8 @@
     app:width=&amp;quot;2dp&amp;quot;
     app:nodeRadius=&amp;quot;5dp&amp;quot;
     /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后第一步，你的物流数据，我们先假设几条，一般要从服务器获取&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;然后第一步，你的物流数据，我们先假设几条，一般要从服务器获取&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;LogisticsData&amp;gt; logisticsDatas;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;快件在【相城中转仓】装车,正发往【无锡分拨中心】已签收,签收人是【王漾】,签收网点是【忻州原平】&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;快件在【相城中转仓】装车,正发往【无锡分拨中心】&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;【北京鸿运良乡站】的【010058.269】正在派件&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;快件到达【潍坊市中转部】,上一站是【】&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;快件在【潍坊市中转部】装车,正发往【潍坊奎文代派】&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;快件到达【潍坊】,上一站是【潍坊市中转部】&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;快件在【武汉分拨中心】装车,正发往【晋江分拨中心】&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;【北京鸿运良乡站】的【010058.269】正在派件&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;【北京鸿运良乡站】的【010058.269】正在派件&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;【北京鸿运良乡站】的【010058.269】正在派件&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logisticsDatas.add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LogisticsData().setTime(&lt;span class=&quot;string&quot;&gt;&quot;2016-6-28 15:13:02&quot;&lt;/span&gt;).setContext(&lt;span class=&quot;string&quot;&gt;&quot;【北京鸿运良乡站】的【010058.269】正在派件&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;第二，找到你的控件并为其设置NodeProgressAdapter适配器&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NodeProgressView nodeProgressView = (NodeProgressView) findViewById(R.id.npv_NodeProgressView);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;nodeProgressView.setNodeProgressAdapter(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; NodeProgressAdapter() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getCount&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; logisticsDatas.size();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;LogisticsData&amp;gt; &lt;span class=&quot;title&quot;&gt;getData&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; logisticsDatas;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -60,7 +61,25 @@
     <summary type="html">
     
       &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;h1 id=&quot;作者&quot;&gt;&lt;a href=&quot;#作者&quot; class=&quot;headerlink&quot; title=&quot;作者&quot;&gt;&lt;/a&gt;作者&lt;/h1&gt;&lt;hr&gt;
-&lt;
+&lt;p&gt;戴定康&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;博客：&lt;a href=&quot;http://daidingkang.cc/&quot; title=&quot;个人博客&quot;&gt;个人博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Csdn:&lt;a href=&quot;http://blog.csdn.net/ddk837239693&quot;&gt;戴定康的博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;NodeProgressView&quot;&gt;&lt;a href=&quot;#NodeProgressView&quot; class=&quot;headerlink&quot; title=&quot;NodeProgressView&quot;&gt;&lt;/a&gt;NodeProgressView&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;用来显示物节点进度的自定义View，仿淘宝&lt;/p&gt;
+&lt;h4 id=&quot;版本尚未发布到Jcenter，后续将会逐一发布，让你使用更简洁&quot;&gt;&lt;a href=&quot;#版本尚未发布到Jcenter，后续将会逐一发布，让你使用更简洁&quot; class=&quot;headerlink&quot; title=&quot;版本尚未发布到Jcenter，后续将会逐一发布，让你使用更简洁&quot;&gt;&lt;/a&gt;版本尚未发布到Jcenter，后续将会逐一发布，让你使用更简洁&lt;/h4&gt;&lt;/blockquote&gt;
+&lt;h1 id=&quot;使用&quot;&gt;&lt;a href=&quot;#使用&quot; class=&quot;headerlink&quot; title=&quot;使用&quot;&gt;&lt;/a&gt;使用&lt;/h1&gt;&lt;p&gt;先拷贝View包下面的文件到你的项目，记得样式等Attr文件也要复制，不然会报错&lt;/p&gt;
+&lt;p&gt;在你的XMl文件中：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;com.nodeprogress.nodeprogress.view.NodeProgressView
+    android:id=&amp;quot;@+id/npv_NodeProgressView&amp;quot;
+    android:layout_width=&amp;quot;wrap_content&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    app:width=&amp;quot;2dp&amp;quot;
+    app:nodeRadius=&amp;quot;5dp&amp;quot;
+    /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
