@@ -100,7 +100,7 @@
 商品详情页需要渐变
 
 1234567891011scrollView.setOnTouchListener(this);@SuppressLint(&quot;NewApi&quot;)@Overridepublic boolean onTouch(View v, MotionEvent event) &amp;#123;">
-<meta property="og:updated_time" content="2016-07-02T08:36:24.072Z">
+<meta property="og:updated_time" content="2016-07-04T06:32:38.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发笔记">
 <meta name="twitter:description" content="&amp;emsp; 本文用于记录开发中遇到的知识点进行记录，方便查阅
@@ -429,7 +429,129 @@ android{
 </code></pre><hr>
 <h2 id="发布项目到Jcenter"><a href="#发布项目到Jcenter" class="headerlink" title="发布项目到Jcenter"></a>发布项目到Jcenter</h2><p><a href="http://www.cnblogs.com/zhaoyanjun/p/4994981.html" target="_blank" rel="external">使用gradle-bintray-plugin发布</a></p>
 <p><a href="http://blog.csdn.net/lmj623565791/article/details/51148825" target="_blank" rel="external">使用bintray-release发布</a></p>
-<hr>
+<p>1:在<code>local.properties</code>设置<a href="http://bintray.com" target="_blank" rel="external">http://bintray.com</a>账号密码</p>
+<pre><code>bintray.user=aesion
+bintray.apikey=67740ec8d6b6fb9ea208f74247190xxxxxxxxx
+</code></pre><p>2:在项目的根目录的<code>build:gradle</code>文件里面添加插件代码 </p>
+<pre><code>classpath &apos;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0&apos;
+classpath &apos;com.github.dcendents:android-maven-gradle-plugin:1.3&apos;
+</code></pre><p>3:库文件项目中的<code>build:gradle</code>的配置：</p>
+<pre><code>apply plugin: &apos;com.android.library&apos;
+
+//配置插件
+apply plugin: &apos;com.github.dcendents.android-maven&apos;
+apply plugin: &apos;com.jfrog.bintray&apos;
+
+version = &quot;1.0.0&quot;       //这个是版本号，必须填写
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.0.3&quot;
+    resourcePrefix &quot;aesion&quot;     //这里随便填
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName &quot;1.0&quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])
+    testCompile &apos;junit:junit:4.12&apos;
+    compile &apos;com.android.support:appcompat-v7:23.2.1&apos;
+
+}
+
+
+def siteUrl = &apos;http://daidingkang.cc/&apos;      // 项目的主页   这个是说明，可随便填
+def gitUrl = &apos;http://daidingkang.cc/&apos;      // Git仓库的url  这个是说明，可随便填
+group = &quot;com.daidingkang&quot;    // 这里是groupId ,必须填写  一般填你唯一的包名
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging &apos;aar&apos;
+                // Add your description here
+                name &apos;Android View&apos;     //项目描述
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name &apos;The Apache Software License, Version 2.0&apos;
+                        url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;
+                    }
+                }
+                developers {
+                    developer {
+                        id &apos;aesion &apos;        //填写开发者的一些基本信息
+                        name &apos;daidingakng&apos;    //填写开发者的一些基本信息
+                        email &apos;mail@daidingkang.cc&apos;   //填写开发者的一些基本信息
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = &apos;sources&apos;
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = &apos;javadoc&apos;
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file(&apos;local.properties&apos;).newDataInputStream())
+bintray {
+    user = properties.getProperty(&quot;bintray.user&quot;)    //读取 local.properties 文件里面的 bintray.user
+    key = properties.getProperty(&quot;bintray.apikey&quot;)   //读取 local.properties 文件里面的 bintray.apikey
+    configurations = [&apos;archives&apos;]
+    pkg {
+        repo = &quot;maven&quot;
+        name = &quot;SnapUpCountDownTimerView&quot;    //发布到JCenter上的项目名字，必须填写
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = [&quot;Apache-2.0&quot;]
+        publish = true
+    }
+}
+
+javadoc {
+    options{
+        encoding &quot;UTF-8&quot;
+        charSet &apos;UTF-8&apos;
+        author true
+        version true
+        links &quot;http://docs.oracle.com/javase/7/docs/api&quot;
+    }
+}
+</code></pre><p>4:执行<code>Terminal</code>命令</p>
+<pre><code>执行命令    gradlew install
+ 执行命令    gradlew bintrayUpload
+</code></pre><hr>
 
       
     </div>
