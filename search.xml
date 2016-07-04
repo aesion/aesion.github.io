@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[开发笔记]]></title>
-      <url>http://yoursite.com/2017/06/22/note/</url>
+      <url>http://daidingkang.cc/2017/06/22/note/</url>
       <content type="html"><![CDATA[<p>&emsp; 本文用于记录开发中遇到的知识点进行记录，方便查阅</p>
 <h2 id="获取scrollview滚动的距离"><a href="#获取scrollview滚动的距离" class="headerlink" title="获取scrollview滚动的距离"></a>获取scrollview滚动的距离</h2><blockquote>
 <p>商品详情页需要渐变</p>
@@ -194,11 +194,11 @@ javadoc {
     
     <entry>
       <title><![CDATA[NodeProgressView 物流节点进度]]></title>
-      <url>http://yoursite.com/2016/06/26/NodeProgressView/</url>
+      <url>http://daidingkang.cc/2016/06/26/NodeProgressView/</url>
       <content type="html"><![CDATA[<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><h1 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h1><hr>
 <p>戴定康</p>
 <blockquote>
-<p>博客：<a href="http://daidingkang.cc/" title="个人博客" target="_blank" rel="external">个人博客</a></p>
+<p>博客：<a href="http://daidingkang.cc/" title="个人博客">个人博客</a></p>
 <p>Csdn:<a href="http://blog.csdn.net/ddk837239693" target="_blank" rel="external">戴定康的博客</a></p>
 </blockquote>
 <hr>
@@ -234,7 +234,7 @@ javadoc {
     
     <entry>
       <title><![CDATA[全新的网络加载框架Retrofit2，上位的小三]]></title>
-      <url>http://yoursite.com/2016/06/17/Retrofit2-network-framework-parsing/</url>
+      <url>http://daidingkang.cc/2016/06/17/Retrofit2-network-framework-parsing/</url>
       <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>&emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到<code>android-async-http</code>，再到如今的老将<code>Volley</code>；曾几何时，正是<code>Xutils</code>,<code>Afindl</code>等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式<code>MVP,MVVM</code>蒸蒸日上，Google都已经抛弃了<code>apache</code>，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着<code>Eclipse</code>；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…</p>
 <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>&emsp; 来自Retrofit的官网介绍</p>
 <blockquote>
@@ -280,7 +280,7 @@ compile &apos;com.google.code.gson:gson:2.6.2&apos;//Gosn解析包
     
     <entry>
       <title><![CDATA[博客改版:从Wordpress到Hexo]]></title>
-      <url>http://yoursite.com/2016/06/16/%E5%8D%9A%E5%AE%A2%E6%94%B9%E7%89%88/</url>
+      <url>http://daidingkang.cc/2016/06/16/%E5%8D%9A%E5%AE%A2%E6%94%B9%E7%89%88/</url>
       <content type="html"><![CDATA[<p>&emsp; 之前一直有对博客进行改版的想法。从2014年最开始搭建时候使用的 Wordpress 博客到现在的 hexo 静态博客，中间也有换过很多个版本，但是都没有使用多久。</p>
 <p>&emsp; 其实换版本和迁移数据是一个很大的问题，对于网站的Seo也会有影响；但是用Hexo有一个好处就是可以不用支付服务器的费用，每年节省了几百块，而且对于数据来说也比较安全，毕竟数据都是放在<a href="http://github.com" target="_blank" rel="external">Github</a>上的,不用担心忘记续费导致服务器被关停。</p>
 <p>&emsp; 其实在这之前我已经注册过好几个域名了比如：aesion.cn，daidingkang.cc等等，这次迁移到Hexo就不打算在改版了，没有那么多的精力，因为很多东西都会受到牵连；可能是本人的审美的问题，比较喜欢简单白净的页面，不喜欢太花俏和繁琐；博客使用 NexT 主题，并把所有内容生成静态文件。这样访问速度也得到了保证，不像wordpress等那么臃肿；</p>

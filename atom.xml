@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://daidingkang.cc/"/>
   <updated>2016-07-04T06:32:38.002Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://daidingkang.cc/</id>
   
   <author>
     <name>Aesion Dai</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>开发笔记</title>
-    <link href="http://yoursite.com/2017/06/22/note/"/>
-    <id>http://yoursite.com/2017/06/22/note/</id>
+    <link href="http://daidingkang.cc/2017/06/22/note/"/>
+    <id>http://daidingkang.cc/2017/06/22/note/</id>
     <published>2017-06-22T07:55:01.000Z</published>
     <updated>2016-07-04T06:32:38.002Z</updated>
     
@@ -218,24 +218,24 @@ javadoc {
     
     </summary>
     
-      <category term="note" scheme="http://yoursite.com/categories/note/"/>
+      <category term="note" scheme="http://daidingkang.cc/categories/note/"/>
     
     
-      <category term="note" scheme="http://yoursite.com/tags/note/"/>
+      <category term="note" scheme="http://daidingkang.cc/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>NodeProgressView 物流节点进度</title>
-    <link href="http://yoursite.com/2016/06/26/NodeProgressView/"/>
-    <id>http://yoursite.com/2016/06/26/NodeProgressView/</id>
+    <link href="http://daidingkang.cc/2016/06/26/NodeProgressView/"/>
+    <id>http://daidingkang.cc/2016/06/26/NodeProgressView/</id>
     <published>2016-06-26T04:42:09.000Z</published>
     <updated>2016-06-29T01:54:44.842Z</updated>
     
     <content type="html">&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;h1 id=&quot;作者&quot;&gt;&lt;a href=&quot;#作者&quot; class=&quot;headerlink&quot; title=&quot;作者&quot;&gt;&lt;/a&gt;作者&lt;/h1&gt;&lt;hr&gt;
 &lt;p&gt;戴定康&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;博客：&lt;a href=&quot;http://daidingkang.cc/&quot; title=&quot;个人博客&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;个人博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;博客：&lt;a href=&quot;http://daidingkang.cc/&quot; title=&quot;个人博客&quot;&gt;个人博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Csdn:&lt;a href=&quot;http://blog.csdn.net/ddk837239693&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;戴定康的博客&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
@@ -293,19 +293,19 @@ javadoc {
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://daidingkang.cc/categories/Android/"/>
     
     
-      <category term="View" scheme="http://yoursite.com/tags/View/"/>
+      <category term="View" scheme="http://daidingkang.cc/tags/View/"/>
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://daidingkang.cc/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>全新的网络加载框架Retrofit2，上位的小三</title>
-    <link href="http://yoursite.com/2016/06/17/Retrofit2-network-framework-parsing/"/>
-    <id>http://yoursite.com/2016/06/17/Retrofit2-network-framework-parsing/</id>
+    <link href="http://daidingkang.cc/2016/06/17/Retrofit2-network-framework-parsing/"/>
+    <id>http://daidingkang.cc/2016/06/17/Retrofit2-network-framework-parsing/</id>
     <published>2016-06-17T07:42:09.000Z</published>
     <updated>2016-06-21T02:17:04.937Z</updated>
     
@@ -374,19 +374,19 @@ compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;//Gosn解析包
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://daidingkang.cc/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://daidingkang.cc/tags/Android/"/>
     
-      <category term="Retrofit2" scheme="http://yoursite.com/tags/Retrofit2/"/>
+      <category term="Retrofit2" scheme="http://daidingkang.cc/tags/Retrofit2/"/>
     
   </entry>
   
   <entry>
     <title>博客改版:从Wordpress到Hexo</title>
-    <link href="http://yoursite.com/2016/06/16/%E5%8D%9A%E5%AE%A2%E6%94%B9%E7%89%88/"/>
-    <id>http://yoursite.com/2016/06/16/博客改版/</id>
+    <link href="http://daidingkang.cc/2016/06/16/%E5%8D%9A%E5%AE%A2%E6%94%B9%E7%89%88/"/>
+    <id>http://daidingkang.cc/2016/06/16/博客改版/</id>
     <published>2016-06-16T07:55:01.000Z</published>
     <updated>2016-06-17T09:15:48.726Z</updated>
     
@@ -404,10 +404,10 @@ compile &amp;apos;com.google.code.gson:gson:2.6.2&amp;apos;//Gosn解析包
     
     </summary>
     
-      <category term="orther" scheme="http://yoursite.com/categories/orther/"/>
+      <category term="orther" scheme="http://daidingkang.cc/categories/orther/"/>
     
     
-      <category term="orther" scheme="http://yoursite.com/tags/orther/"/>
+      <category term="orther" scheme="http://daidingkang.cc/tags/orther/"/>
     
   </entry>
   
