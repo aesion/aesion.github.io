@@ -303,6 +303,57 @@ javadoc {
   </entry>
   
   <entry>
+    <title>SnapUpCountDownTimerView 抢购倒计时控件</title>
+    <link href="http://daidingkang.cc/2016/06/26/SnapUpCountDownTimerView/"/>
+    <id>http://daidingkang.cc/2016/06/26/SnapUpCountDownTimerView/</id>
+    <published>2016-06-26T04:42:09.000Z</published>
+    <updated>2016-07-05T01:19:27.896Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;h1 id=&quot;作者&quot;&gt;&lt;a href=&quot;#作者&quot; class=&quot;headerlink&quot; title=&quot;作者&quot;&gt;&lt;/a&gt;作者&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;戴定康&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;博客：&lt;a href=&quot;http://daidingkang.cc/&quot; title=&quot;个人博客&quot;&gt;个人博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Csdn:&lt;a href=&quot;http://blog.csdn.net/ddk837239693&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;戴定康的博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;SnapUpCountDownTimerView&quot;&gt;&lt;a href=&quot;#SnapUpCountDownTimerView&quot; class=&quot;headerlink&quot; title=&quot;SnapUpCountDownTimerView&quot;&gt;&lt;/a&gt;SnapUpCountDownTimerView&lt;/h1&gt;&lt;p&gt;抢购倒计时，样式可调，大小可调，Gradle引用更方便。countDown&lt;/p&gt;
+&lt;h2 id=&quot;Gradle引用&quot;&gt;&lt;a href=&quot;#Gradle引用&quot; class=&quot;headerlink&quot; title=&quot;Gradle引用&quot;&gt;&lt;/a&gt;Gradle引用&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;compile &amp;apos;com.daidingkang:snapupcountdowntimerview:1.0.0&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;在你的Xml中&quot;&gt;&lt;a href=&quot;#在你的Xml中&quot; class=&quot;headerlink&quot; title=&quot;在你的Xml中&quot;&gt;&lt;/a&gt;在你的Xml中&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;com.daidingkang.SnapUpCountDownTimerView
+android:id=&amp;quot;@+id/RushBuyCountDownTimerView&amp;quot;
+android:layout_width=&amp;quot;wrap_content&amp;quot;
+android:layout_height=&amp;quot;wrap_content&amp;quot;
+android:layout_marginLeft=&amp;quot;20dp&amp;quot;
+app:viewSize=&amp;quot;12&amp;quot;&amp;gt;
+&amp;lt;/com.daidingkang.SnapUpCountDownTimerView&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;用法&quot;&gt;&lt;a href=&quot;#用法&quot; class=&quot;headerlink&quot; title=&quot;用法&quot;&gt;&lt;/a&gt;用法&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;SnapUpCountDownTimerView rushBuyCountDownTimerView = (SnapUpCountDownTimerView) findViewById(R.id.RushBuyCountDownTimerView);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      rushBuyCountDownTimerView.setTime(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;55&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//设置小时，分钟，秒。注意不能大于正常值，否则会抛出异常&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      rushBuyCountDownTimerView.start();&lt;span class=&quot;comment&quot;&gt;//开始倒计时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;rushBuyCountDownTimerView.stop();//停止倒计时
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So easy 是不是很简单，赶紧试试吧&lt;br&gt;喜欢的童鞋欢迎Star and Fork&lt;/p&gt;
+&lt;h1 id=&quot;源码下载&quot;&gt;&lt;a href=&quot;#源码下载&quot; class=&quot;headerlink&quot; title=&quot;源码下载&quot;&gt;&lt;/a&gt;源码下载&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;点击即可下载 &lt;a href=&quot;https://github.com/aesion/SnapUpCountDownTimerView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;SnapUpCountDownTimerView&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;下载的童鞋希望多多star and fork；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/aesion/SnapUpCountDownTimerView/master/images/S60702-170557.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/aesion/SnapUpCountDownTimerView/master/images/S60702-172429.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;当然，我们安卓自带了一个CountDownTimer类，大家可以看一看&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TextView vertifyView;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; CountDownTimer timer = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; CountDownTimer(&lt;span class=&quot;number&quot;&gt;10000&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onTick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; millisUntilFinished)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            vertifyView.setText((millisUntilFinished / &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;) + &lt;span class=&quot;string&quot;&gt;&quot;秒后可重发&quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onFinish&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            vertifyView.setEnabled(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            vertifyView.setText(&lt;span class=&quot;string&quot;&gt;&quot;获取验证码&quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;h1 id=&quot;作者&quot;&gt;&lt;a href=&quot;#作者&quot; class=&quot;headerlink&quot; title=&quot;作者&quot;&gt;&lt;/a&gt;作者&lt;/h1&gt;&lt;hr&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://daidingkang.cc/categories/Android/"/>
+    
+    
+      <category term="View" scheme="http://daidingkang.cc/tags/View/"/>
+    
+      <category term="Android" scheme="http://daidingkang.cc/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
     <title>全新的网络加载框架Retrofit2，上位的小三</title>
     <link href="http://daidingkang.cc/2016/06/17/Retrofit2-network-framework-parsing/"/>
     <id>http://daidingkang.cc/2016/06/17/Retrofit2-network-framework-parsing/</id>

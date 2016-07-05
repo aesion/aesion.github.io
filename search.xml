@@ -233,6 +233,38 @@ javadoc {
     </entry>
     
     <entry>
+      <title><![CDATA[SnapUpCountDownTimerView 抢购倒计时控件]]></title>
+      <url>http://daidingkang.cc/2016/06/26/SnapUpCountDownTimerView/</url>
+      <content type="html"><![CDATA[<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><h1 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h1><hr>
+<p>戴定康</p>
+<blockquote>
+<p>博客：<a href="http://daidingkang.cc/" title="个人博客">个人博客</a></p>
+<p>Csdn:<a href="http://blog.csdn.net/ddk837239693" target="_blank" rel="external">戴定康的博客</a></p>
+</blockquote>
+<hr>
+<h1 id="SnapUpCountDownTimerView"><a href="#SnapUpCountDownTimerView" class="headerlink" title="SnapUpCountDownTimerView"></a>SnapUpCountDownTimerView</h1><p>抢购倒计时，样式可调，大小可调，Gradle引用更方便。countDown</p>
+<h2 id="Gradle引用"><a href="#Gradle引用" class="headerlink" title="Gradle引用"></a>Gradle引用</h2><pre><code>compile &apos;com.daidingkang:snapupcountdowntimerview:1.0.0&apos;
+</code></pre><h2 id="在你的Xml中"><a href="#在你的Xml中" class="headerlink" title="在你的Xml中"></a>在你的Xml中</h2><pre><code>&lt;com.daidingkang.SnapUpCountDownTimerView
+android:id=&quot;@+id/RushBuyCountDownTimerView&quot;
+android:layout_width=&quot;wrap_content&quot;
+android:layout_height=&quot;wrap_content&quot;
+android:layout_marginLeft=&quot;20dp&quot;
+app:viewSize=&quot;12&quot;&gt;
+&lt;/com.daidingkang.SnapUpCountDownTimerView&gt;
+</code></pre><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SnapUpCountDownTimerView rushBuyCountDownTimerView = (SnapUpCountDownTimerView) findViewById(R.id.RushBuyCountDownTimerView);</span><br><span class="line">      rushBuyCountDownTimerView.setTime(<span class="number">1</span>,<span class="number">55</span>,<span class="number">3</span>);<span class="comment">//设置小时，分钟，秒。注意不能大于正常值，否则会抛出异常</span></span><br><span class="line">      rushBuyCountDownTimerView.start();<span class="comment">//开始倒计时</span></span><br></pre></td></tr></table></figure>
+<pre><code>rushBuyCountDownTimerView.stop();//停止倒计时
+</code></pre><p>So easy 是不是很简单，赶紧试试吧<br>喜欢的童鞋欢迎Star and Fork</p>
+<h1 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h1><blockquote>
+<p>点击即可下载 <a href="https://github.com/aesion/SnapUpCountDownTimerView" target="_blank" rel="external"><strong>SnapUpCountDownTimerView</strong></a><br>下载的童鞋希望多多star and fork；</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/aesion/SnapUpCountDownTimerView/master/images/S60702-170557.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/aesion/SnapUpCountDownTimerView/master/images/S60702-172429.jpg" alt=""></p>
+<p>当然，我们安卓自带了一个CountDownTimer类，大家可以看一看</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> TextView vertifyView;  </span><br><span class="line">    <span class="keyword">private</span> CountDownTimer timer = <span class="keyword">new</span> CountDownTimer(<span class="number">10000</span>, <span class="number">1000</span>) &#123;  </span><br><span class="line">  </span><br><span class="line">        <span class="meta">@Override</span>  </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTick</span><span class="params">(<span class="keyword">long</span> millisUntilFinished)</span> </span>&#123;  </span><br><span class="line">            vertifyView.setText((millisUntilFinished / <span class="number">1000</span>) + <span class="string">"秒后可重发"</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="meta">@Override</span>  </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFinish</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">            vertifyView.setEnabled(<span class="keyword">true</span>);  </span><br><span class="line">            vertifyView.setText(<span class="string">"获取验证码"</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[全新的网络加载框架Retrofit2，上位的小三]]></title>
       <url>http://daidingkang.cc/2016/06/17/Retrofit2-network-framework-parsing/</url>
       <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>&emsp; 纪念这个明天比昨天更好的时代，纪念这个二胎开放的时代，对于技术日新月累的今天，各种新的网络技术也层数不穷，从老牌的HttpClient，那时还不能称之为框架；到<code>android-async-http</code>，再到如今的老将<code>Volley</code>；曾几何时，正是<code>Xutils</code>,<code>Afindl</code>等大而全的框架盛行其道的时候，如今也已经褪去了往日的辉煌，留下了无尽的悔恨暗暗孤独终老；如今新的网络框架诸如Okhttp,Retrofit等异军突起，新技术新思想如雨后春笋般冒了出来，设计模式<code>MVP,MVVM</code>蒸蒸日上，Google都已经抛弃了<code>apache</code>，我们还有什么理由不跟紧时代；Android都已经是N了，谁还为14以下做兼容，AS都已经2.1了谁还死守着<code>Eclipse</code>；对于变化如此快的世界，我不会抱怨也不会有欣喜；默默的望着灰色的屏幕，继续敲着我未完成的代码…</p>
