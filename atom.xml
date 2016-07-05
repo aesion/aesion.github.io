@@ -307,7 +307,7 @@ javadoc {
     <link href="http://daidingkang.cc/2016/06/26/SnapUpCountDownTimerView/"/>
     <id>http://daidingkang.cc/2016/06/26/SnapUpCountDownTimerView/</id>
     <published>2016-06-26T04:42:09.000Z</published>
-    <updated>2016-07-05T01:19:27.896Z</updated>
+    <updated>2016-07-05T01:23:04.324Z</updated>
     
     <content type="html">&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;h1 id=&quot;作者&quot;&gt;&lt;a href=&quot;#作者&quot; class=&quot;headerlink&quot; title=&quot;作者&quot;&gt;&lt;/a&gt;作者&lt;/h1&gt;&lt;hr&gt;
 &lt;p&gt;戴定康&lt;/p&gt;
@@ -325,7 +325,8 @@ android:layout_height=&amp;quot;wrap_content&amp;quot;
 android:layout_marginLeft=&amp;quot;20dp&amp;quot;
 app:viewSize=&amp;quot;12&amp;quot;&amp;gt;
 &amp;lt;/com.daidingkang.SnapUpCountDownTimerView&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;用法&quot;&gt;&lt;a href=&quot;#用法&quot; class=&quot;headerlink&quot; title=&quot;用法&quot;&gt;&lt;/a&gt;用法&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;SnapUpCountDownTimerView rushBuyCountDownTimerView = (SnapUpCountDownTimerView) findViewById(R.id.RushBuyCountDownTimerView);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      rushBuyCountDownTimerView.setTime(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;55&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//设置小时，分钟，秒。注意不能大于正常值，否则会抛出异常&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      rushBuyCountDownTimerView.start();&lt;span class=&quot;comment&quot;&gt;//开始倒计时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;用法&quot;&gt;&lt;a href=&quot;#用法&quot; class=&quot;headerlink&quot; title=&quot;用法&quot;&gt;&lt;/a&gt;用法&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;SnapUpCountDownTimerView rushBuyCountDownTimerView = (SnapUpCountDownTimerView) findViewById(R.id.RushBuyCountDownTimerView);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      rushBuyCountDownTimerView.setTime(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;55&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//设置小时，分钟，秒。注意不能大于正常值，否则会抛出异常&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      rushBuyCountDownTimerView.start();&lt;span class=&quot;comment&quot;&gt;//开始倒计时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;pre&gt;&lt;code&gt;rushBuyCountDownTimerView.stop();//停止倒计时
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So easy 是不是很简单，赶紧试试吧&lt;br&gt;喜欢的童鞋欢迎Star and Fork&lt;/p&gt;
 &lt;h1 id=&quot;源码下载&quot;&gt;&lt;a href=&quot;#源码下载&quot; class=&quot;headerlink&quot; title=&quot;源码下载&quot;&gt;&lt;/a&gt;源码下载&lt;/h1&gt;&lt;blockquote&gt;
@@ -340,7 +341,22 @@ app:viewSize=&amp;quot;12&amp;quot;&amp;gt;
     <summary type="html">
     
       &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;h1 id=&quot;作者&quot;&gt;&lt;a href=&quot;#作者&quot; class=&quot;headerlink&quot; title=&quot;作者&quot;&gt;&lt;/a&gt;作者&lt;/h1&gt;&lt;hr&gt;
-&lt;
+&lt;p&gt;戴定康&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;博客：&lt;a href=&quot;http://daidingkang.cc/&quot; title=&quot;个人博客&quot;&gt;个人博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Csdn:&lt;a href=&quot;http://blog.csdn.net/ddk837239693&quot;&gt;戴定康的博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;SnapUpCountDownTimerView&quot;&gt;&lt;a href=&quot;#SnapUpCountDownTimerView&quot; class=&quot;headerlink&quot; title=&quot;SnapUpCountDownTimerView&quot;&gt;&lt;/a&gt;SnapUpCountDownTimerView&lt;/h1&gt;&lt;p&gt;抢购倒计时，样式可调，大小可调，Gradle引用更方便。countDown&lt;/p&gt;
+&lt;h2 id=&quot;Gradle引用&quot;&gt;&lt;a href=&quot;#Gradle引用&quot; class=&quot;headerlink&quot; title=&quot;Gradle引用&quot;&gt;&lt;/a&gt;Gradle引用&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;compile &amp;apos;com.daidingkang:snapupcountdowntimerview:1.0.0&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;在你的Xml中&quot;&gt;&lt;a href=&quot;#在你的Xml中&quot; class=&quot;headerlink&quot; title=&quot;在你的Xml中&quot;&gt;&lt;/a&gt;在你的Xml中&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;com.daidingkang.SnapUpCountDownTimerView
+android:id=&amp;quot;@+id/RushBuyCountDownTimerView&amp;quot;
+android:layout_width=&amp;quot;wrap_content&amp;quot;
+android:layout_height=&amp;quot;wrap_content&amp;quot;
+android:layout_marginLeft=&amp;quot;20dp&amp;quot;
+app:viewSize=&amp;quot;12&amp;quot;&amp;gt;
+&amp;lt;/com.daidingkang.SnapUpCountDownTimerView&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     

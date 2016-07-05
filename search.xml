@@ -251,7 +251,8 @@ android:layout_height=&quot;wrap_content&quot;
 android:layout_marginLeft=&quot;20dp&quot;
 app:viewSize=&quot;12&quot;&gt;
 &lt;/com.daidingkang.SnapUpCountDownTimerView&gt;
-</code></pre><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SnapUpCountDownTimerView rushBuyCountDownTimerView = (SnapUpCountDownTimerView) findViewById(R.id.RushBuyCountDownTimerView);</span><br><span class="line">      rushBuyCountDownTimerView.setTime(<span class="number">1</span>,<span class="number">55</span>,<span class="number">3</span>);<span class="comment">//设置小时，分钟，秒。注意不能大于正常值，否则会抛出异常</span></span><br><span class="line">      rushBuyCountDownTimerView.start();<span class="comment">//开始倒计时</span></span><br></pre></td></tr></table></figure>
+</code></pre><a id="more"></a>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SnapUpCountDownTimerView rushBuyCountDownTimerView = (SnapUpCountDownTimerView) findViewById(R.id.RushBuyCountDownTimerView);</span><br><span class="line">      rushBuyCountDownTimerView.setTime(<span class="number">1</span>,<span class="number">55</span>,<span class="number">3</span>);<span class="comment">//设置小时，分钟，秒。注意不能大于正常值，否则会抛出异常</span></span><br><span class="line">      rushBuyCountDownTimerView.start();<span class="comment">//开始倒计时</span></span><br></pre></td></tr></table></figure>
 <pre><code>rushBuyCountDownTimerView.stop();//停止倒计时
 </code></pre><p>So easy 是不是很简单，赶紧试试吧<br>喜欢的童鞋欢迎Star and Fork</p>
 <h1 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h1><blockquote>
